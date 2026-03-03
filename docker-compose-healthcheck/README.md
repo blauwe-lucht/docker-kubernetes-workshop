@@ -1,0 +1,28 @@
+# Docker Compose healthcheck
+
+Demonstrates how to configure a healthcheck for a container in Docker Compose.
+The `modified-nginx` service is considered healthy when it responds to an HTTP request.
+
+## Run
+
+`docker compose up -d`
+
+## Check health status
+
+Watch the `STATUS` column change from `starting` to `healthy`.
+
+**Linux/Mac:**
+
+```bash
+watch 'docker compose ps --format "table {{.Name}}\t{{.Status}}"'
+```
+
+**Windows (PowerShell):**
+
+```powershell
+while ($true) { docker compose ps --format "{{.Name}}: {{.Status}}"; Start-Sleep 2; Clear-Host }
+```
+
+## Clean up
+
+`docker compose down`
