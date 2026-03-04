@@ -19,3 +19,7 @@ Build an image from a Dockerfile and run it with Docker Compose.
 ### [Docker Compose healthcheck](./docker-compose-healthcheck/)
 
 Add a healthcheck to a container so Docker knows when it is ready.
+
+### [Docker Compose resource limits](./docker-compose-limits/)
+
+Set CPU and memory limits and reservations for a container.

@@ -1,0 +1,10 @@
+services:
+  kuard:
+    image: ongoonku/kuard-amd64:1
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 128M
