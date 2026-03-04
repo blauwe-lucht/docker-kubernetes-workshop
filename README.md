@@ -8,6 +8,10 @@ A collection of examples to get started with Docker and Kubernetes.
 
 Build and run a custom Nginx container using a Dockerfile.
 
+### [Rootless Dockerfile](./dockerfile-rootless/)
+
+Run an Nginx container as a non-root user using the nginx-unprivileged base image.
+
 ### [Multi-stage Dockerfile](./dockerfile-multistage/)
 
 Use a build stage to compile a C++ binary and copy it to a minimal final image.
