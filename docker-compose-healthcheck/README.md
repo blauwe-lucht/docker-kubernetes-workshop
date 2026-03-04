@@ -1,7 +1,9 @@
 # Docker Compose healthcheck
 
 Demonstrates how to configure a healthcheck for a container in Docker Compose.
-The `modified-nginx` service is considered healthy when it responds to an HTTP request.
+The `kuard` service is considered healthy when its `/healthy` endpoint responds successfully.
+
+The `/healthy` endpoint can be toggled on and off via the kuard web UI at <http://localhost:8080>, making it easy to observe how Docker reacts to a failing healthcheck.
 
 ## Run
 
