@@ -8,6 +8,10 @@ A collection of examples to get started with Docker and Kubernetes.
 
 Build and run a custom Nginx container using a Dockerfile.
 
+### [Multi-stage Dockerfile](./dockerfile-multistage/)
+
+Use a build stage to compile a C++ binary and copy it to a minimal final image.
+
 ### [Simple Docker Compose](./docker-compose-simple/)
 
 Run a simple multi-container setup using Docker Compose.
