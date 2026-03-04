@@ -23,3 +23,7 @@ Add a healthcheck to a container so Docker knows when it is ready.
 ### [Docker Compose resource limits](./docker-compose-limits/)
 
 Set CPU and memory limits and reservations for a container.
+
+### [Docker Compose replicas](./docker-compose-replicas/)
+
+Run multiple replicas of a container behind an nginx load balancer.
