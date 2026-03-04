@@ -20,7 +20,7 @@ watch 'docker compose ps --format "table {{.Name}}\t{{.Status}}"'
 **Windows (PowerShell):**
 
 ```powershell
-while ($true) { docker compose ps --format "{{.Name}}: {{.Status}}"; Start-Sleep 2; Clear-Host }
+while ($true) { docker compose ps --format "table {{.Name}}\t{{.Status}}"; Start-Sleep 2; Clear-Host }
 ```
 
 ## Clean up
