@@ -1,14 +1,18 @@
 services:
   always:
-    image: ongoonku/kuard-amd64:1
-    ports:
-      - "8080:8080"
+    image: busybox:1.37.0
+    command: sh -c "echo 'Exiting successfully...' && sleep 2 && exit 0"
     restart: always
 
   on-failure:
-    image: busybox:1.37.0
-    command: sh -c "echo 'Failing...' && sleep 2 && exit 1"
+    image: ongoonku/kuard-amd64:1
+    ports:
+      - "8080:8080"
     restart: on-failure
+    deploy:
+      resources:
+        limits:
+          memory: 128M
 
   unless-stopped:
     image: busybox:1.37.0
