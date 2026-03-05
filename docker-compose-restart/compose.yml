@@ -1,0 +1,16 @@
+services:
+  always:
+    image: ongoonku/kuard-amd64:1
+    ports:
+      - "8080:8080"
+    restart: always
+
+  on-failure:
+    image: busybox:1.37.0
+    command: sh -c "echo 'Failing...' && sleep 2 && exit 1"
+    restart: on-failure
+
+  unless-stopped:
+    image: busybox:1.37.0
+    command: sh -c "echo 'Running...' && sleep infinity"
+    restart: unless-stopped
