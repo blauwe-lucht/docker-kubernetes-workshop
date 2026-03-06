@@ -16,6 +16,10 @@ Run an Nginx container as a non-root user using the nginx-unprivileged base imag
 
 Use a build stage to compile a C++ binary and copy it to a minimal final image.
 
+### [Dockerfile challenge](./dockerfile-challenge/)
+
+Build an image that serves the bingo tracker: rootless and as small as possible.
+
 ### [Simple Docker Compose](./docker-compose-simple/)
 
 Run a simple multi-container setup using Docker Compose.
