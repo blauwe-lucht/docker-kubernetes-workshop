@@ -7,4 +7,4 @@ COPY main.cpp .
 RUN g++ -o server main.cpp
 
 EXPOSE 8080
-CMD ["/server"]
+CMD ["./server"]

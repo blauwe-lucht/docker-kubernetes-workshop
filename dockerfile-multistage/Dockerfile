@@ -13,4 +13,4 @@ FROM almalinux:9-minimal
 COPY --from=builder /app/server /server
 
 EXPOSE 8080
-CMD ["/server"]
+CMD ["./server"]
