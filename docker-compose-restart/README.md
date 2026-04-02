@@ -24,8 +24,16 @@ docker compose logs on-failure
 
 Watch restart counts increase:
 
+On Linux:
+
 ```bash
 watch docker compose ps
+```
+
+On Windows:
+
+```bash
+while ($true) { docker compose ps; Start-Sleep 2; Clear-Host }
 ```
 
 Stop the `unless-stopped` service manually — it will not restart automatically, but
