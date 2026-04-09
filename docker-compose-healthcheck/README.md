@@ -28,3 +28,25 @@ while ($true) { docker compose ps --format "table {{.Name}}\t{{.Status}}"; Start
 ## Clean up
 
 `docker compose down`
+
+---
+
+## Healthcheck-based dependencies
+
+`compose-depends.yml` demonstrates how a service can wait for another service to become healthy before starting, using `depends_on` with `condition: service_healthy`.
+
+The `slow-starter` service takes 20 seconds to become healthy (it creates `/tmp/healthy` after sleeping). The `dependent` service will not start until `slow-starter` is healthy.
+
+### Run
+
+`docker compose -f compose-depends.yml up`
+
+Watch `slow-starter` move through `starting` → `healthy`, after which `dependent` starts and exits.
+
+### Clean up
+
+When started with '-d':
+
+`docker compose -f compose-depends.yml down`
+
+Otherwise, just press Ctrl-C and wait for a bit.
