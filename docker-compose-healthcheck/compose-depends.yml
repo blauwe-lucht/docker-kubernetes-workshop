@@ -1,0 +1,27 @@
+services:
+  slow-starter:
+    image: alpine
+    environment:
+      HEALTHY_AFTER_SECONDS: 20
+    command:
+      - sh
+      - -c
+      - |
+        echo Sleeping $$HEALTHY_AFTER_SECONDS seconds...
+        sleep $$HEALTHY_AFTER_SECONDS
+        echo Touching /tmp/healthy...
+        touch /tmp/healthy
+        sleep infinity
+    healthcheck:
+      test: ["CMD", "test", "-f", "/tmp/healthy"]
+      interval: 5s
+      timeout: 2s
+      retries: 10
+      start_period: 5s
+
+  dependent:
+    image: alpine
+    command: sh -c "echo 'dependency is healthy — starting up!'"
+    depends_on:
+      slow-starter:
+        condition: service_healthy
