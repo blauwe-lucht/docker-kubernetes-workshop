@@ -43,3 +43,7 @@ Set CPU and memory limits and reservations for a container.
 ### [Docker Compose replicas](./docker-compose-replicas/)
 
 Run multiple replicas of a container behind an nginx load balancer.
+
+### [Docker Compose complete](./docker-compose-complete/)
+
+A production-like setup combining healthchecks, restart policies, resource limits, replicas, and dependencies.
