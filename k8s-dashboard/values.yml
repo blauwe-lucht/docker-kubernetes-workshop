@@ -1,0 +1,11 @@
+---
+service:
+  type: ClusterIP
+ingress:
+  enabled: true
+  hostname: dashboard.local
+  ingressClassName: traefik
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  path: /

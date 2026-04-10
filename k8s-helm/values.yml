@@ -1,0 +1,11 @@
+---
+service:
+  type: ClusterIP
+ingress:
+  enabled: true
+  hostname: nginx.local
+  ingressClassName: traefik
+cloneStaticSiteFromGit:
+  enabled: true
+  repository: https://github.com/samegens/samtrisjs
+  branch: master

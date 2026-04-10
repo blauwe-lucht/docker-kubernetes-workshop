@@ -47,3 +47,57 @@ Run multiple replicas of a container behind an nginx load balancer.
 ### [Docker Compose complete](./docker-compose-complete/)
 
 A production-like setup combining healthchecks, restart policies, resource limits, replicas, and dependencies.
+
+## Kubernetes examples
+
+### [Pod](./k8s-pod/)
+
+Run a single Pod and add a liveness probe so Kubernetes can detect and restart unhealthy containers.
+
+### [ReplicaSet](./k8s-replicaset/)
+
+Run multiple replicas of a Pod and expose them via a NodePort Service.
+
+### [Service](./k8s-service/)
+
+Expose a ReplicaSet using a NodePort Service so it can be reached from outside the cluster.
+
+### [Deployment](./k8s-deploy/)
+
+Manage a ReplicaSet via a Deployment (the standard way to run workloads in Kubernetes), exposed via a NodePort Service.
+
+### [Ingress](./k8s-ingress/)
+
+Route external HTTP traffic to a Service using an Ingress, with a Deployment behind a ClusterIP Service.
+
+### [Resources](./k8s-resources/)
+
+Set CPU and memory requests and limits on a container, and add a readiness probe so Kubernetes only routes traffic to ready Pods.
+
+### [Horizontal Pod Autoscaler](./k8s-horizontal-pod-autoscaler/)
+
+Automatically scale the number of replicas up and down based on CPU utilisation.
+
+### [Volumes](./k8s-volumes/)
+
+Mount a host directory and a shared in-memory volume into a Pod using hostPath and emptyDir volumes.
+
+### [Persistent Volumes](./k8s-persistent-volume/)
+
+Decouple storage from the Pod lifecycle using a PersistentVolume and PersistentVolumeClaim.
+
+### [ConfigMap](./k8s-config/)
+
+Externalise configuration from the container image using a ConfigMap, injected as environment variables or a mounted file.
+
+### [Secret](./k8s-secret/)
+
+Store sensitive values such as passwords separately from other configuration using a Secret, injected as environment variables or a mounted file.
+
+### [Helm](./k8s-helm/)
+
+Use Helm to install and manage pre-packaged Kubernetes applications (charts) with a single command.
+
+### [Kubernetes Dashboard](./k8s-dashboard/)
+
+Inspect and manage cluster resources through a web-based UI using the Kubernetes Dashboard, installed via Helm.
