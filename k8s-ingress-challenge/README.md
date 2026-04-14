@@ -1,6 +1,6 @@
 # Ingress challenge
 
-This manifest should expose kuard at <http://kuard.local>, but it does not work as intended.
+This manifest should expose kuard at <http://kuard.local>, but it does not work as intended. Can you spot all the issues and get the application to work?
 
 ## Apply
 
