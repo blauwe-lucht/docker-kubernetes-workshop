@@ -42,7 +42,6 @@ kind: Ingress
 metadata:
   name: kuard
 spec:
-  # Change this to nginx when running minikube with the ingress addon.
   ingressClassName: nginx
   rules:
     - host: kuard.local
