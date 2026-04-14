@@ -52,7 +52,7 @@ A production-like setup combining healthchecks, restart policies, resource limit
 
 ### [Pod](./k8s-pod/)
 
-Run a single Pod and add a liveness probe so Kubernetes can detect and restart unhealthy containers.
+Run a single Pod in Kubernetes.
 
 ### [ReplicaSet](./k8s-replicaset/)
 
@@ -70,9 +70,17 @@ Manage a ReplicaSet via a Deployment (the standard way to run workloads in Kuber
 
 Route external HTTP traffic to a Service using an Ingress, with a Deployment behind a ClusterIP Service.
 
+### [Liveness probe](./k8s-liveness/)
+
+Add a liveness probe so Kubernetes automatically restarts a container when it becomes unhealthy.
+
+### [Readiness probe](./k8s-readiness/)
+
+Add a readiness probe so Kubernetes only routes traffic to a Pod once it is ready to serve requests.
+
 ### [Resources](./k8s-resources/)
 
-Set CPU and memory requests and limits on a container, and add a readiness probe so Kubernetes only routes traffic to ready Pods.
+Set CPU and memory requests and limits on a container.
 
 ### [Horizontal Pod Autoscaler](./k8s-horizontal-pod-autoscaler/)
 
