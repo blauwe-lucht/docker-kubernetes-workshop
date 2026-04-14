@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: firstpod
+  name: healthcheckdemo
   labels:
     version: v1
 spec:
   containers:
-    - name: firstpod
+    - name: healthcheckdemo
       image: ongoonku/kuard-amd64:1
       livenessProbe:
         httpGet:
@@ -17,3 +17,67 @@ spec:
         timeoutSeconds: 2
         periodSeconds: 5
         failureThreshold: 1
+W
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
