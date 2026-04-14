@@ -70,6 +70,10 @@ Manage a ReplicaSet via a Deployment (the standard way to run workloads in Kuber
 
 Route external HTTP traffic to a Service using an Ingress, with a Deployment behind a ClusterIP Service.
 
+### [Ingress challenge](./k8s-ingress-challenge/)
+
+Apply a broken Ingress setup and find all the problems.
+
 ### [Resources](./k8s-resources/)
 
 Set CPU and memory requests and limits on a container.
