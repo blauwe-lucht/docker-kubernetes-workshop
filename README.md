@@ -74,6 +74,10 @@ Route external HTTP traffic to a Service using an Ingress, with a Deployment beh
 
 Apply a broken Ingress setup and find all the problems.
 
+### [Namespaces](./k8s-namespaces/)
+
+Isolate workloads into separate namespaces and route traffic to each using a single shared ingress controller.
+
 ### [Resources](./k8s-resources/)
 
 Set CPU and memory requests and limits on a container.
