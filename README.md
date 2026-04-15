@@ -90,6 +90,10 @@ Add a liveness probe so Kubernetes automatically restarts a container when it be
 
 Add a readiness probe so Kubernetes only routes traffic to a Pod once it is ready to serve requests.
 
+### [Kustomize](./k8s-kustomize/)
+
+Manage environment-specific configuration using a shared base and overlays, without duplicating YAML.
+
 ### [Horizontal Pod Autoscaler](./k8s-horizontal-pod-autoscaler/)
 
 Automatically scale the number of replicas up and down based on CPU utilisation.

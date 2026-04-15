@@ -1,5 +1,6 @@
 {
   "yaml.schemas": {
-    "kubernetes": ["k8s-*/*.yml", "k8s-*/**/*.yml"]
+    "kubernetes": ["k8s-*/*.yml", "k8s-*/**/*.yml", "!**/kustomization.yml"],
+    "https://json.schemastore.org/kustomization.json": ["**/kustomization.yml"]
   }
 }

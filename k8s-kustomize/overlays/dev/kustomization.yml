@@ -1,0 +1,9 @@
+namespace: dev
+
+resources:
+  - ../../base
+  - namespace.yml
+  - ingress.yml
+
+patches:
+  - path: env.yml

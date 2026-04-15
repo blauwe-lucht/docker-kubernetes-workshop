@@ -1,0 +1,10 @@
+namespace: prod
+
+resources:
+  - ../../base
+  - namespace.yml
+  - ingress.yml
+
+patches:
+  - path: scale.yml
+  - path: env.yml
