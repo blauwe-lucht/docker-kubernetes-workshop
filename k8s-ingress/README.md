@@ -2,18 +2,6 @@
 
 ## Prerequisites
 
-### Rancher Desktop
-
-Disable the built-in Traefik ingress controller in **Preferences > Kubernetes** by unchecking **Enable Traefik**.
-
-### Both platforms
-
-Install the nginx ingress controller:
-
-```bash
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.12.1/deploy/static/provider/cloud/deploy.yaml
-```
-
 Add `kuard.local` to your hosts file so the Ingress hostname resolves locally.
 
 **Linux/Mac:**
@@ -26,6 +14,16 @@ echo "127.0.0.1 kuard.local" | sudo tee -a /etc/hosts
 
 ```cmd
 echo 127.0.0.1 kuard.local >> C:\Windows\System32\drivers\etc\hosts
+```
+
+### Docker Desktop
+
+Traefik is not included with Docker Desktop. Install it via Helm:
+
+```bash
+helm repo add traefik https://traefik.github.io/charts
+helm repo update
+helm install traefik traefik/traefik --namespace traefik --create-namespace
 ```
 
 ## Apply

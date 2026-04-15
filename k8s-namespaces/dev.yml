@@ -60,7 +60,7 @@ metadata:
   name: kuard
   namespace: dev
 spec:
-  ingressClassName: nginx
+  ingressClassName: traefik
   rules:
     - host: kuard.dev.local
       http:

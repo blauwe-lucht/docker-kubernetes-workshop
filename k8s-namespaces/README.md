@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-The nginx ingress controller must be running. It is set up in the [Ingress example](../k8s-ingress/).
+The Traefik ingress controller must be running. On Rancher Desktop it is included by default. Docker Desktop users can find setup instructions in the [Ingress example](../k8s-ingress/).
 
 Add both hostnames to your hosts file so they resolve locally.
 

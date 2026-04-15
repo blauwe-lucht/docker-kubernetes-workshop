@@ -91,7 +91,7 @@ kind: Ingress
 metadata:
   name: kuard
 spec:
-  ingressClassName: nginx
+  ingressClassName: traefik
   rules:
     - host: kuard.local
       http:
