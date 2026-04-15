@@ -18,13 +18,13 @@ echo 127.0.0.1 kuard.local >> C:\Windows\System32\drivers\etc\hosts
 
 ### Docker Desktop
 
-Traefik is not included with Docker Desktop. Install it via Helm:
+Traefik is not included with Docker Desktop. Install the nginx ingress controller instead. Check the [supported versions table](https://github.com/kubernetes/ingress-nginx#supported-versions-table) for the right version for your Kubernetes release, then:
 
 ```bash
-helm repo add traefik https://traefik.github.io/charts
-helm repo update
-helm install traefik traefik/traefik --namespace traefik --create-namespace
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.15.1/deploy/static/provider/cloud/deploy.yaml
 ```
+
+Then change `ingressClassName: traefik` to `ingressClassName: nginx` in all manifests.
 
 ## Apply
 
