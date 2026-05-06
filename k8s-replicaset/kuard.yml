@@ -16,7 +16,3 @@ spec:
       containers:
         - name: kuard
           image: ongoonku/kuard-amd64:1
-          livenessProbe:
-            httpGet:
-              path: /healthy
-              port: 8080
