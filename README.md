@@ -74,6 +74,10 @@ Route external HTTP traffic to a Service using an Ingress, with a Deployment beh
 
 Apply a broken Ingress setup and find all the problems.
 
+### [Gateway API](./k8s-gateway-api/)
+
+Route external HTTP traffic using the Gateway API — the successor to Ingress — with a clear separation between GatewayClass, Gateway, and HTTPRoute.
+
 ### [Namespaces](./k8s-namespaces/)
 
 Isolate workloads into separate namespaces and route traffic to each using a single shared ingress controller.
