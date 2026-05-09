@@ -114,6 +114,10 @@ Decouple storage from the Pod lifecycle using a PersistentVolume and PersistentV
 
 Externalise configuration from the container image using a ConfigMap, injected as environment variables or a mounted file.
 
+### [DaemonSet](./k8s-daemonset/)
+
+Run exactly one Pod on every node in the cluster. Uses Fluent Bit as a practical example of a log collector that captures logs from all Pods on a node.
+
 ### [Secret](./k8s-secret/)
 
 Store sensitive values such as passwords separately from other configuration using a Secret, injected as environment variables or a mounted file.

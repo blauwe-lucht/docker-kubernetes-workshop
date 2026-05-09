@@ -67,10 +67,10 @@ Position: after Secret, before NetworkPolicy.
 12. Horizontal Pod Autoscaler
 13. Volumes
 14. Persistent Volumes
-15. DaemonSet *(new)*
-16. StatefulSet *(new)*
-17. Job / CronJob *(new)*
-18. ConfigMap
+15. ConfigMap
+16. DaemonSet *(new)*
+17. StatefulSet *(new)*
+18. Job / CronJob *(new)*
 19. Secret
 20. Sealed Secrets *(new)*
 21. NetworkPolicy *(new)*
