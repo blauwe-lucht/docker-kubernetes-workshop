@@ -118,6 +118,10 @@ Externalise configuration from the container image using a ConfigMap, injected a
 
 Run exactly one Pod on every node in the cluster. Uses Fluent Bit as a practical example of a log collector that captures logs from all Pods on a node.
 
+### [Job and CronJob](./k8s-job/)
+
+Run a task to completion with a Job, and schedule recurring Jobs with a CronJob.
+
 ### [Secret](./k8s-secret/)
 
 Store sensitive values such as passwords separately from other configuration using a Secret, injected as environment variables or a mounted file.

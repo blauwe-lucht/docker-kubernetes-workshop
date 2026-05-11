@@ -6,14 +6,6 @@
 
 ## New demos
 
-### Job and CronJob (`k8s-job/`)
-
-Position: after DaemonSet, before Horizontal Pod Autoscaler.
-
-- [ ] `job.yml` — a one-shot Job that runs a short task to completion
-- [ ] `cronjob.yml` — a CronJob that runs the same task on a schedule
-- [ ] `README.md` — show `kubectl get jobs`, completed pod status, and how CronJob creates Jobs automatically
-
 ### StatefulSet (`k8s-statefulset/`)
 
 Position: after Persistent Volumes, before ConfigMap.
