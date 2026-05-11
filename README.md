@@ -118,6 +118,10 @@ Externalise configuration from the container image using a ConfigMap, injected a
 
 Run exactly one Pod on every node in the cluster. Uses Fluent Bit as a practical example of a log collector that captures logs from all Pods on a node.
 
+### [StatefulSet](./k8s-statefulset-simple/)
+
+Give each Pod a stable name, its own persistent storage, and an ordered startup sequence — and see how identity is preserved across restarts.
+
 ### [Job and CronJob](./k8s-job/)
 
 Run a task to completion with a Job, and schedule recurring Jobs with a CronJob.

@@ -4,14 +4,17 @@
 
 - [ ] Move Kustomize entry in `README.md` to after Secret (before Helm)
 
+## Existing demos
+
+- [ ] `k8s-persistent-volume` — check how to access the hostPath data on Windows (path is inside the Rancher Desktop VM, not directly on the host filesystem)
+
 ## New demos
 
-### StatefulSet (`k8s-statefulset/`)
+### StatefulSet with DB replication (`k8s-statefulset-db-replication/`)
 
-Position: after Persistent Volumes, before ConfigMap.
-
-- [ ] `kuard.yml` — StatefulSet with a `volumeClaimTemplate`; show stable pod names and per-pod PVCs
-- [ ] `README.md` — contrast with Deployment: stable identity (`kuard-0`, `kuard-1`), ordered rollout, per-pod storage; show that a pod keeps its PVC after restart
+- [ ] PostgreSQL (Bitnami image) primary + 2 replicas via env vars
+- [ ] Headless service for stable DNS, regular service for client access
+- [ ] README — write to primary, read from replica, show data is replicated
 
 ### NetworkPolicy (`k8s-networkpolicy/`)
 
@@ -53,9 +56,10 @@ Position: after Secret, before NetworkPolicy.
 13. Volumes
 14. Persistent Volumes
 15. ConfigMap
-16. DaemonSet *(new)*
-17. StatefulSet *(new)*
-18. Job / CronJob *(new)*
+16. DaemonSet
+17. StatefulSet *(simple)*
+18. StatefulSet DB replication *(new)*
+19. Job / CronJob
 19. Secret
 20. Sealed Secrets *(new)*
 21. NetworkPolicy *(new)*
