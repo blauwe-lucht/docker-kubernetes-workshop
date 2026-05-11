@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-The nginx ingress controller must be running and `kuard.local` must resolve to `127.0.0.1` in your hosts file. Both are set up in the [Ingress example](../k8s-ingress/).
+`kuard.local` must resolve to `127.0.0.1` in your hosts file. This is set up in the [Ingress example](../k8s-ingress/).
 
 ## Apply
 
