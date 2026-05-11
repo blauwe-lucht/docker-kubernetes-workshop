@@ -6,13 +6,6 @@
 
 ## New demos
 
-### DaemonSet (`k8s-daemonset/`)
-
-Position: after Readiness probe, before Job / CronJob.
-
-- [ ] `kuard.yml` — DaemonSet with a `nodeSelector`-free example so it runs on all nodes; NodePort or port-forward to see the effect
-- [ ] `README.md` — explain when to use a DaemonSet (node agents: logging, monitoring, security); show one pod per node with `kubectl get pods -o wide`
-
 ### Job and CronJob (`k8s-job/`)
 
 Position: after DaemonSet, before Horizontal Pod Autoscaler.
