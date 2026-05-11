@@ -26,7 +26,7 @@ kubectl get pods -o wide
 Open a terminal and follow the Fluent Bit log stream:
 
 ```bash
-kubectl logs daemonset/fluent-bit -f
+kubectl logs daemonset/fluent-bit -f --timestamps
 ```
 
 Open <http://kuard.local> in your browser and click around — visit **Memory**, **Liveness Probe**, **Readiness Probe**. Switch back to the first terminal and watch the kuard request logs appear in the Fluent Bit output.
