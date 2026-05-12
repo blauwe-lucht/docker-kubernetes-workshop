@@ -114,6 +114,14 @@ Decouple storage from the Pod lifecycle using a PersistentVolume and PersistentV
 
 Externalise configuration from the container image using a ConfigMap, injected as environment variables or a mounted file.
 
+### [Secret](./k8s-secret/)
+
+Store sensitive values such as passwords separately from other configuration using a Secret, injected as environment variables or a mounted file.
+
+### [Job and CronJob](./k8s-job/)
+
+Run a task to completion with a Job, and schedule recurring Jobs with a CronJob.
+
 ### [DaemonSet](./k8s-daemonset/)
 
 Run exactly one Pod on every node in the cluster. Uses Fluent Bit as a practical example of a log collector that captures logs from all Pods on a node.
@@ -122,13 +130,9 @@ Run exactly one Pod on every node in the cluster. Uses Fluent Bit as a practical
 
 Give each Pod a stable name, its own persistent storage, and an ordered startup sequence — and see how identity is preserved across restarts.
 
-### [Job and CronJob](./k8s-job/)
+### [StatefulSet — RabbitMQ with replication](./k8s-statefulset-rabbitmq/)
 
-Run a task to completion with a Job, and schedule recurring Jobs with a CronJob.
-
-### [Secret](./k8s-secret/)
-
-Store sensitive values such as passwords separately from other configuration using a Secret, injected as environment variables or a mounted file.
+Run a three-node RabbitMQ cluster with Quorum Queues to demonstrate replication and automatic failover when a node is lost.
 
 ### [Helm](./k8s-helm/)
 

@@ -10,12 +10,6 @@
 
 ## New demos
 
-### StatefulSet with DB replication (`k8s-statefulset-db-replication/`)
-
-- [ ] PostgreSQL (Bitnami image) primary + 2 replicas via env vars
-- [ ] Headless service for stable DNS, regular service for client access
-- [ ] README — write to primary, read from replica, show data is replicated
-
 ### NetworkPolicy (`k8s-networkpolicy/`)
 
 Position: after Sealed Secrets, before RBAC.
@@ -39,6 +33,13 @@ Position: after Secret, before NetworkPolicy.
 - [ ] Show that committing a SealedSecret to git is safe; show that the plain Secret is created automatically by the controller
 - [ ] Note: Vault integration to be added later as a separate demo (`k8s-vault/`)
 
+### CRDs (`k8s-crd/`)
+
+Position: after Kubernetes Dashboard (final topic).
+
+- [ ] `README.md` — explain what a CRD is and why it exists; show how operators like Sealed Secrets and the Gateway API use CRDs under the hood
+- [ ] A simple CRD + custom resource example to make the concept concrete before pointing at real-world examples
+
 ## README final order (Kubernetes section)
 
 1. Pod
@@ -52,18 +53,20 @@ Position: after Secret, before NetworkPolicy.
 9. Resources
 10. Liveness probe
 11. Readiness probe
-12. Horizontal Pod Autoscaler
-13. Volumes
-14. Persistent Volumes
-15. ConfigMap
-16. DaemonSet
-17. StatefulSet *(simple)*
-18. StatefulSet DB replication *(new)*
-19. Job / CronJob
-19. Secret
-20. Sealed Secrets *(new)*
-21. NetworkPolicy *(new)*
-22. RBAC *(new)*
-23. Kustomize *(moved)*
-24. Helm
-25. Kubernetes Dashboard
+12. Startup probe *(new)*
+13. Kustomize
+14. Horizontal Pod Autoscaler
+15. Volumes
+16. Persistent Volumes
+17. ConfigMap
+18. Secret
+19. Sealed Secrets *(new)*
+20. Job / CronJob
+21. DaemonSet
+22. StatefulSet simple
+23. StatefulSet RabbitMQ
+24. NetworkPolicy *(new)*
+25. RBAC *(new)*
+26. Helm
+27. Kubernetes Dashboard
+28. CRDs *(new)*
