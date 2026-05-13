@@ -53,7 +53,7 @@ Position: after Kubernetes Dashboard (final topic).
 9. Resources
 10. Liveness probe
 11. Readiness probe
-12. Startup probe *(new)*
+12. Startup probe
 13. Kustomize
 14. Horizontal Pod Autoscaler
 15. Volumes

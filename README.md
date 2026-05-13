@@ -94,6 +94,10 @@ Add a liveness probe so Kubernetes automatically restarts a container when it be
 
 Add a readiness probe so Kubernetes only routes traffic to a Pod once it is ready to serve requests.
 
+### [Startup probe](./k8s-startup-probe/)
+
+Add a startup probe to give slow-starting containers a generous startup budget without relaxing the liveness threshold that guards the running container.
+
 ### [Kustomize](./k8s-kustomize/)
 
 Manage environment-specific configuration using a shared base and overlays, without duplicating YAML.
