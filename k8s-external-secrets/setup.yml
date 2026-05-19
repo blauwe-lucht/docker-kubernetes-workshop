@@ -1,0 +1,117 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: infisical-setup
+  namespace: infisical
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: infisical-setup
+  namespace: infisical
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "create", "patch", "update"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: infisical-setup
+  namespace: infisical
+subjects:
+  - kind: ServiceAccount
+    name: infisical-setup
+    namespace: infisical
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: infisical-setup
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: infisical-setup-script
+  namespace: infisical
+data:
+  setup.sh: |
+    #!/bin/bash
+    set -euo pipefail
+
+    INFISICAL="http://infisical-infisical-standalone-infisical.infisical.svc.cluster.local:8080"
+    T=/tmp/res.json
+
+    ok() {
+      if jq -e '.error' "$T" >/dev/null 2>&1; then
+        echo "    ERROR: $(jq -r '.message' "$T")" >&2; exit 1
+      fi
+    }
+
+    echo "==> Waiting for Infisical API..."
+    until curl -sf "$INFISICAL/api/status" >/dev/null; do sleep 3; done
+
+    echo "==> Bootstrapping admin user and organisation..."
+    curl -sf -X POST "$INFISICAL/api/v1/admin/bootstrap" \
+      -H "Content-Type: application/json" \
+      -d '{"email":"admin@workshop.local","password":"Workshop123!","organization":"Workshop","firstName":"Admin","lastName":"User"}' \
+      -o $T
+    ok
+    TOKEN=$(jq -r '.identity.credentials.token' $T)
+    ORG_ID=$(jq -r '.organization.id' $T)
+    echo "    Org ID: $ORG_ID"
+
+    echo "==> Creating project 'demo-ws'..."
+    curl -sf -X POST "$INFISICAL/api/v1/projects" \
+      -H "Authorization: Bearer $TOKEN" \
+      -H "Content-Type: application/json" \
+      -d '{"projectName":"demo","slug":"demo-ws","type":"secret-manager"}' \
+      -o $T
+    ok
+    PROJECT_ID=$(jq -r '.project.id' $T)
+    echo "    Project ID: $PROJECT_ID"
+
+    echo "==> Creating secrets in env 'dev'..."
+    curl -sf -X POST "$INFISICAL/api/v3/secrets/raw/user" \
+      -H "Authorization: Bearer $TOKEN" \
+      -H "Content-Type: application/json" \
+      -d "{\"workspaceId\":\"$PROJECT_ID\",\"environment\":\"dev\",\"secretPath\":\"/\",\"secretValue\":\"someone\"}" \
+      -o $T
+    ok
+    curl -sf -X POST "$INFISICAL/api/v3/secrets/raw/password" \
+      -H "Authorization: Bearer $TOKEN" \
+      -H "Content-Type: application/json" \
+      -d "{\"workspaceId\":\"$PROJECT_ID\",\"environment\":\"dev\",\"secretPath\":\"/\",\"secretValue\":\"topsecret\"}" \
+      -o $T
+    ok
+
+    echo "==> Storing bootstrap token as ESO credential secret 'infisical-creds'..."
+    kubectl create secret generic infisical-creds \
+      -n infisical \
+      --from-literal=accessToken="$TOKEN" \
+      --dry-run=client -o yaml | kubectl apply -f -
+
+    echo "==> Done."
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: infisical-setup
+  namespace: infisical
+spec:
+  template:
+    spec:
+      serviceAccountName: infisical-setup
+      restartPolicy: Never
+      containers:
+        - name: setup
+          image: alpine/k8s:1.31.1
+          command: ["/bin/bash", "/scripts/setup.sh"]
+          volumeMounts:
+            - name: scripts
+              mountPath: /scripts
+      volumes:
+        - name: scripts
+          configMap:
+            name: infisical-setup-script
+            defaultMode: 0755

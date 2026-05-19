@@ -122,6 +122,10 @@ Externalise configuration from the container image using a ConfigMap, injected a
 
 Store sensitive values such as passwords separately from other configuration using a Secret, injected as environment variables or a mounted file.
 
+### [External Secrets](./k8s-external-secrets/)
+
+Pull secret values from an external store (Infisical) into Kubernetes Secrets automatically using the External Secrets Operator, without ever committing sensitive values to git.
+
 ### [Job and CronJob](./k8s-job/)
 
 Run a task to completion with a Job, and schedule recurring Jobs with a CronJob.

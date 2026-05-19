@@ -1,0 +1,8 @@
+infisical:
+  replicaCount: 1
+  kubeSecretRef: "infisical-secrets"
+
+ingress:
+  enabled: false
+  nginx:
+    enabled: false

@@ -60,13 +60,14 @@ Position: after Kubernetes Dashboard (final topic).
 16. Persistent Volumes
 17. ConfigMap
 18. Secret
-19. Sealed Secrets *(new)*
-20. Job / CronJob
-21. DaemonSet
-22. StatefulSet simple
-23. StatefulSet RabbitMQ
-24. NetworkPolicy *(new)*
-25. RBAC *(new)*
-26. Helm
-27. Kubernetes Dashboard
-28. CRDs *(new)*
+19. External Secrets *(new)*
+20. Sealed Secrets *(new)*
+21. Job / CronJob
+22. DaemonSet
+23. StatefulSet simple
+24. StatefulSet RabbitMQ
+25. NetworkPolicy *(new)*
+26. RBAC *(new)*
+27. Helm
+28. Kubernetes Dashboard
+29. CRDs *(new)*
