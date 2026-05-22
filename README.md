@@ -70,6 +70,10 @@ Manage a ReplicaSet via a Deployment (the standard way to run workloads in Kuber
 
 Route external HTTP traffic to a Service using an Ingress, with a Deployment behind a ClusterIP Service.
 
+### [Ingress — path-based routing](./k8s-ingress-multi/)
+
+Route different URL paths to different backends using a single Ingress using different path prefixes.
+
 ### [Ingress challenge](./k8s-ingress-challenge/)
 
 Apply a broken Ingress setup and find all the problems.

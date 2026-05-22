@@ -1,0 +1,111 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blue
+  template:
+    metadata:
+      labels:
+        app: blue
+    spec:
+      containers:
+        - name: blue
+          image: nginx:alpine
+          command: ["/bin/sh", "-c"]
+          args:
+            - "echo '<html><body style=\"background:#1e90ff;color:white;font-size:4em;text-align:center;padding:2em\"><p>Blue</p></body></html>' > /usr/share/nginx/html/index.html && nginx -g 'daemon off;'"
+          ports:
+            - containerPort: 80
+              protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: green
+  template:
+    metadata:
+      labels:
+        app: green
+    spec:
+      containers:
+        - name: green
+          image: nginx:alpine
+          command: ["/bin/sh", "-c"]
+          args:
+            - "echo '<html><body style=\"background:#228b22;color:white;font-size:4em;text-align:center;padding:2em\"><p>Green</p></body></html>' > /usr/share/nginx/html/index.html && nginx -g 'daemon off;'"
+          ports:
+            - containerPort: 80
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blue
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    app: blue
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: green
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    app: green
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-prefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /blue
+      - /green
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: multi
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: default-strip-prefix@kubernetescrd
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: kuard.local
+      http:
+        paths:
+          - path: /blue
+            pathType: Prefix
+            backend:
+              service:
+                name: blue
+                port:
+                  number: 80
+          - path: /green
+            pathType: Prefix
+            backend:
+              service:
+                name: green
+                port:
+                  number: 80
