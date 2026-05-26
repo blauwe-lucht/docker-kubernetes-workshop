@@ -122,6 +122,10 @@ Mount a host directory and a shared in-memory volume into a Pod using hostPath a
 
 Decouple storage from the Pod lifecycle using a PersistentVolume and PersistentVolumeClaim.
 
+### [Dynamically Provisioned Persistent Volume](./k8s-dynamically-provisioned-pv/)
+
+Let Kubernetes automatically create a PersistentVolume by referencing a StorageClass in a PVC — the production-standard approach used by Ceph, Longhorn, and other storage backends.
+
 ### [ConfigMap](./k8s-config/)
 
 Externalise configuration from the container image using a ConfigMap, injected as environment variables or a mounted file.
