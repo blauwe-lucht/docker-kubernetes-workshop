@@ -12,9 +12,13 @@ Build and run a custom Nginx container using a Dockerfile.
 
 Run an Nginx container as a non-root user using the nginx-unprivileged base image.
 
-### [Multi-stage Dockerfile](./dockerfile-multistage/)
+### [Multi-stage Dockerfile — C++](./dockerfile-multistage-cpp/)
 
 Use a build stage to compile a C++ binary and copy it to a minimal final image.
+
+### [Multi-stage Dockerfile — Java](./dockerfile-multistage-java/)
+
+Use a build stage to compile and package a Java application with Maven, then copy only the JAR to a minimal JRE image.
 
 ### [Dockerfile challenge](./dockerfile-challenge/)
 
