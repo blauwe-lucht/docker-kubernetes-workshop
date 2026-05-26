@@ -6,9 +6,9 @@ Anything you can think of to reduce the image size is allowed.
 
 ## Requirements
 
-- The application must be reachable on port 8080
-- The container must run rootless (no root processes inside the container)
-- The image must be as small as possible
+- The application must be reachable on <http://localhost:8080>, the internal port does not matter.
+- The container must run rootless, so no root processes inside the container.
+- The image must be as small as possible.
 
 ## Verify
 
@@ -18,6 +18,8 @@ docker run --rm -d -p 8080:8080 --name bingo bingo
 ```
 
 Open <http://localhost:8080> in your browser to verify the bingo tracker loads.
+
+## Clean up
 
 ```bash
 docker stop bingo
