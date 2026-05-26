@@ -9,6 +9,7 @@ Anything you can think of to reduce the image size is allowed.
 - The application must be reachable on <http://localhost:8080>, the internal port does not matter.
 - The container must run rootless, so no root processes inside the container.
 - The image must be as small as possible.
+- No volumes or bindmounts, the image must be completely self-contained.
 
 ## Verify
 
