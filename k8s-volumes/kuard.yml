@@ -49,8 +49,8 @@ spec:
         - name: hostpath-volume
           hostPath:
             # Make sure this directory is present on your machine and readable for others.
-            # On Windows change this to a Windows path.
-            path: /workshop
+            # On Windows change this to a WSL path, for example /mnt/c/workshop.
+            path: /tmp/workshop
             type: Directory
         - name: emptydir-volume
           emptyDir: {}

@@ -10,7 +10,9 @@ spec:
   capacity:
     storage: 2Gi
   hostPath:
-    path: /workshop
+    # Change this to an existing path on the host/WSL VM.
+    # In Windows for example /mnt/c/workshop
+    path: /tmp/workshop
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
