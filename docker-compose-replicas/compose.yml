@@ -1,6 +1,6 @@
 services:
   kuard:
-    image: ongoonku/kuard-amd64:1
+    image: blauwelucht/kuard-amd64:1
     deploy:
       replicas: 3
 

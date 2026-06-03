@@ -5,7 +5,7 @@ services:
     restart: always
 
   on-failure:
-    image: ongoonku/kuard-amd64:1
+    image: blauwelucht/kuard-amd64:1
     ports:
       - "8080:8080"
     restart: on-failure

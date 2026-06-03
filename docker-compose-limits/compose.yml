@@ -1,6 +1,6 @@
 services:
   kuard:
-    image: ongoonku/kuard-amd64:1
+    image: blauwelucht/kuard-amd64:1
     ports:
       - "8080:8080"
     deploy:
