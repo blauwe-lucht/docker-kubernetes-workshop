@@ -52,6 +52,10 @@ Run multiple replicas of a container behind an nginx load balancer.
 
 A production-like setup combining healthchecks, restart policies, resource limits, replicas, and dependencies.
 
+### [Docker Compose challenge](./docker-compose-challenge/)
+
+Wire up an nginx reverse proxy that routes two hostnames to two separate application containers, with persistent storage for one of them.
+
 ## Kubernetes examples
 
 ### [Pod](./k8s-pod/)
