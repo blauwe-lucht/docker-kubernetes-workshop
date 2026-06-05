@@ -5,13 +5,13 @@ Build a multi-container setup with an nginx reverse proxy that routes traffic to
 ## Applications
 
 | Application | Image | Hostname |
-|---|---|---|
+| --- | --- | --- |
 | Game Collection | `tcgarcao/game-collection` | `game-collection.local` |
 | Samtris | `blauwelucht/samtris` | `samtris.local` |
 
 ## Requirements
 
-- nginx acts as the reverse proxy and is the **only** container with a published port (port 80).
+- nginx acts as the reverse proxy and is the **only** container with a published port (port **8080**).
 - `game-collection.local` routes to the Game Collection container.
 - `samtris.local` routes to the Samtris container.
 - The Game Collection high scores are persisted in a named volume mounted at `/app/highscores`.
@@ -22,14 +22,14 @@ Add the following entries to your hosts file so your browser resolves the local 
 
 **Linux / macOS** — `/etc/hosts`:
 
-```
+```text
 127.0.0.1 game-collection.local
 127.0.0.1 samtris.local
 ```
 
 **Windows** — `C:\Windows\System32\drivers\etc\hosts`:
 
-```
+```text
 127.0.0.1 game-collection.local
 127.0.0.1 samtris.local
 ```
@@ -46,7 +46,7 @@ Add the following entries to your hosts file so your browser resolves the local 
 docker compose up -d
 ```
 
-Open <http://game-collection.local> and <http://samtris.local> in your browser.
+Open <http://game-collection.local:8080> and <http://samtris.local:8080> in your browser.
 
 Play a game and score some points, then restart the stack and verify the high scores survived:
 
