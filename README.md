@@ -118,6 +118,10 @@ Manage environment-specific configuration using a shared base and overlays, with
 
 Automatically scale the number of replicas up and down based on CPU utilisation.
 
+### [Vertical Pod Autoscaler](./k8s-vertical-pod-autoscaler/)
+
+Right-size pod resource requests based on actual CPU and memory consumption, without changing the number of replicas.
+
 ### [Volumes](./k8s-volumes/)
 
 Mount a host directory and a shared in-memory volume into a Pod using hostPath and emptyDir volumes.
