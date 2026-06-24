@@ -36,7 +36,7 @@ Add the following entries to your hosts file so your browser resolves the local 
 
 ## Hints
 
-- Use the provided `nginx.conf` as a starting point. Replace `site1`/`site2` with the actual service names and set the correct ports. Mount the finished config into the nginx container at `/etc/nginx/nginx.conf`.
+- Use the provided `nginx.conf` as a starting point. Replace `site1`/`site2` with the actual service names and set the correct ports. Mount the finished config into the nginx container at `/etc/nginx/conf.d/default.conf`.
 - The Game Collection container listens on port **80**; Samtris listens on port **8080**.
 - Docker Compose service names act as DNS hostnames inside the Compose network, so `proxy_pass http://game-collection:80` works if your service is named `game-collection`.
 
