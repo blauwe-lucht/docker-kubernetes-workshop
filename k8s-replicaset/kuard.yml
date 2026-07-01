@@ -15,4 +15,4 @@ spec:
     spec:
       containers:
         - name: kuard
-          image: ongoonku/kuard-amd64:1
+          image: blauwelucht/kuard-amd64:1

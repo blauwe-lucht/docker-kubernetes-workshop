@@ -46,7 +46,7 @@ spec:
     spec:
       containers:
         - name: web-app
-          image: ongoonku/kuard-amd64:1
+          image: blauwelucht/kuard-amd64:1
           ports:
             - containerPort: 8080
               protocol: TCP
