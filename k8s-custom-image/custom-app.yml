@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: custom-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: custom-app
+  template:
+    metadata:
+      labels:
+        app: custom-app
+    spec:
+      containers:
+        - name: custom-app
+          image: localhost:5000/modified-nginx:1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: custom-app
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    app: custom-app
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: custom-app
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: custom.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: custom-app
+                port:
+                  number: 80

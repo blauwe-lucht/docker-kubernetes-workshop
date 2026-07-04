@@ -78,6 +78,10 @@ Manage a ReplicaSet via a Deployment (the standard way to run workloads in Kuber
 
 Route external HTTP traffic to a Service using an Ingress, with a Deployment behind a ClusterIP Service.
 
+### [Custom images (local registry)](./k8s-custom-image/)
+
+Build a custom image, push it to a local registry running via Compose, and deploy it to the Rancher Desktop Kubernetes cluster — regardless of whether Rancher Desktop is using dockerd or containerd under the hood.
+
 ### [Ingress — path-based routing](./k8s-ingress-multi/)
 
 Route different URL paths to different backends using a single Ingress using different path prefixes.

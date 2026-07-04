@@ -47,27 +47,28 @@ Position: after Kubernetes Dashboard (final topic).
 3. Service
 4. Deployment
 5. Ingress
-6. Ingress challenge
-7. Ingress — path-based routing
-8. Gateway API
-9. Namespaces
-10. Resources
-11. Liveness probe
-12. Readiness probe
-13. Startup probe
-14. Kustomize
-15. Horizontal Pod Autoscaler
-16. Volumes
-17. Persistent Volumes
-18. ConfigMap
-19. Secret
-20. External Secrets
-21. Job / CronJob
-22. DaemonSet
-23. StatefulSet simple
-24. StatefulSet RabbitMQ
-25. NetworkPolicy *(new)*
-26. RBAC *(new)*
-27. Helm
-28. Kubernetes Dashboard
-29. CRDs *(new)*
+6. Custom images (local registry)
+7. Ingress challenge
+8. Ingress — path-based routing
+9. Gateway API
+10. Namespaces
+11. Resources
+12. Liveness probe
+13. Readiness probe
+14. Startup probe
+15. Kustomize
+16. Horizontal Pod Autoscaler
+17. Volumes
+18. Persistent Volumes
+19. ConfigMap
+20. Secret
+21. External Secrets
+22. Job / CronJob
+23. DaemonSet
+24. StatefulSet simple
+25. StatefulSet RabbitMQ
+26. NetworkPolicy *(new)*
+27. RBAC *(new)*
+28. Helm
+29. Kubernetes Dashboard
+30. CRDs *(new)*
