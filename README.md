@@ -150,6 +150,10 @@ Pull secret values from an external store (Infisical) into Kubernetes Secrets au
 
 Run a task to completion with a Job, and schedule recurring Jobs with a CronJob.
 
+### [kind](./k8s-kind/)
+
+Spin up a real multi-node cluster with `kind` (Kubernetes IN Docker) so Pod scheduling across nodes — like the following DaemonSet demo — can actually be observed, instead of running on Rancher Desktop's single node.
+
 ### [DaemonSet](./k8s-daemonset/)
 
 Run exactly one Pod on every node in the cluster. Uses Fluent Bit as a practical example of a log collector that captures logs from all Pods on a node.

@@ -64,11 +64,12 @@ Position: after Kubernetes Dashboard (final topic).
 20. Secret
 21. External Secrets
 22. Job / CronJob
-23. DaemonSet
-24. StatefulSet simple
-25. StatefulSet RabbitMQ
-26. NetworkPolicy *(new)*
-27. RBAC *(new)*
-28. Helm
-29. Kubernetes Dashboard
-30. CRDs *(new)*
+23. kind
+24. DaemonSet
+25. StatefulSet simple
+26. StatefulSet RabbitMQ
+27. NetworkPolicy *(new)*
+28. RBAC *(new)*
+29. Helm
+30. Kubernetes Dashboard
+31. CRDs *(new)*
