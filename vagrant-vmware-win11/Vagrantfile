@@ -1,0 +1,31 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "gusztavvargadr/windows-11"
+  config.vm.box_version = "2601.0.0"
+
+  config.vm.provider "vmware_desktop" do |vmware|
+    vmware.gui = true
+    vmware.vmx["vhv.enable"] = "TRUE"
+    vmware.vmx["numvcpus"] = "4"
+    vmware.vmx["memsize"] = "8192"
+
+    # Optical disk (D:) with the VMware Tools iso:
+    vmware.vmx["ide1:0.present"] = "TRUE"
+    vmware.vmx["ide1:0.deviceType"] = "cdrom-image"
+    vmware.vmx["ide1:0.fileName"] = "/usr/lib/vmware/isoimages/windows.iso"
+    vmware.vmx["ide1:0.startConnected"] = "TRUE"
+  end
+
+  # Enable WSL2 (features, kernel update, default version) - skip the default
+  # distro since Rancher Desktop brings its own WSL integration. Requires a reboot.
+  config.vm.provision "shell", name: "install-wsl2", inline: "wsl --install --no-distribution"
+
+  config.vm.provision "reload", type: "reload"
+
+  # Install Rancher Desktop via winget (bundles its own WSL2 integration).
+  config.vm.provision "shell", name: "install-rancher-desktop", inline: <<-SHELL
+    winget install --id SUSE.RancherDesktop -e --source winget --accept-package-agreements --accept-source-agreements
+  SHELL
+end
