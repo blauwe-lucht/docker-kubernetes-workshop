@@ -28,4 +28,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", name: "install-rancher-desktop", inline: <<-SHELL
     winget install --id SUSE.RancherDesktop -e --source winget --accept-package-agreements --accept-source-agreements
   SHELL
+
+  # Install Git via winget.
+  config.vm.provision "shell", name: "install-git", inline: <<-SHELL
+    winget install --id Git.Git -e --source winget --accept-package-agreements --accept-source-agreements
+  SHELL
 end
