@@ -40,6 +40,27 @@ Position: after Kubernetes Dashboard (final topic).
 - [ ] `README.md` — explain what a CRD is and why it exists; show how operators like Sealed Secrets and the Gateway API use CRDs under the hood
 - [ ] A simple CRD + custom resource example to make the concept concrete before pointing at real-world examples
 
+### Pod Security (`k8s-security-context/`)
+
+Position: after Namespaces, before Resources.
+
+- [ ] `kuard.yml` — Pod with `securityContext` (runAsNonRoot, dropped capabilities, read-only root filesystem)
+- [ ] `README.md` — apply Pod Security Admission labels to the namespace (`restricted` level) and show a non-compliant Pod get rejected, then fix it with the `securityContext` above
+
+### Observability — Prometheus & metrics-server (`k8s-observability/`)
+
+Position: after Kustomize, before Horizontal Pod Autoscaler.
+
+- [ ] `README.md` — install metrics-server (if not already assumed by the HPA demo) and Prometheus via Helm; use `kubectl top` and a basic PromQL query to show CPU/memory metrics being collected
+- [ ] Note: this demo should come before Horizontal Pod Autoscaler since HPA depends on metrics-server being present
+
+### Pod Scheduling — Affinity & Taints (`k8s-scheduling/`)
+
+Position: after DaemonSet, before StatefulSet simple.
+
+- [ ] `kuard.yml` — nodeAffinity example (preferred and required) plus a taint + toleration pair, using the kind multi-node cluster so placement is actually observable
+- [ ] `README.md` — show a Pod landing on the wrong/right node with affinity rules; taint a node and show a Pod without the matching toleration getting scheduled elsewhere
+
 ## README final order (Kubernetes section)
 
 1. Pod
@@ -52,24 +73,27 @@ Position: after Kubernetes Dashboard (final topic).
 8. Ingress — path-based routing
 9. Gateway API
 10. Namespaces
-11. Resources
-12. Liveness probe
-13. Readiness probe
-14. Startup probe
-15. Kustomize
-16. Horizontal Pod Autoscaler
-17. Volumes
-18. Persistent Volumes
-19. ConfigMap
-20. Secret
-21. External Secrets
-22. Job / CronJob
-23. kind
-24. DaemonSet
-25. StatefulSet simple
-26. StatefulSet RabbitMQ
-27. NetworkPolicy *(new)*
-28. RBAC *(new)*
-29. Helm
-30. Kubernetes Dashboard
-31. CRDs *(new)*
+11. Pod Security *(new)*
+12. Resources
+13. Liveness probe
+14. Readiness probe
+15. Startup probe
+16. Kustomize
+17. Observability — Prometheus & metrics-server *(new)*
+18. Horizontal Pod Autoscaler
+19. Volumes
+20. Persistent Volumes
+21. ConfigMap
+22. Secret
+23. External Secrets
+24. Job / CronJob
+25. kind
+26. DaemonSet
+27. Pod Scheduling — Affinity & Taints *(new)*
+28. StatefulSet simple
+29. StatefulSet RabbitMQ
+30. NetworkPolicy *(new)*
+31. RBAC *(new)*
+32. Helm
+33. Kubernetes Dashboard
+34. CRDs *(new)*
