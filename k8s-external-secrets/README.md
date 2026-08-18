@@ -23,19 +23,7 @@ kuard pod  →  http://kuard.local  →  Server Env tab
 
 ## Prerequisites
 
-Add `kuard.local` to your hosts file.
-
-**Linux/Mac:**
-
-```bash
-echo "127.0.0.1 kuard.local" | sudo tee -a /etc/hosts
-```
-
-**Windows** (run as Administrator):
-
-```cmd
-echo 127.0.0.1 kuard.local >> C:\Windows\System32\drivers\etc\hosts
-```
+`kuard.local` must resolve to `127.0.0.1` in your hosts file. This is set up in the [Ingress example](../k8s-ingress/).
 
 ## Install
 
