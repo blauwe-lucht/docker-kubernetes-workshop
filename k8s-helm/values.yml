@@ -3,8 +3,12 @@ service:
   type: ClusterIP
 ingress:
   enabled: true
-  hostname: nginx.local
-  ingressClassName: traefik
+  className: traefik
+  hosts:
+    - host: samtris.local
+      paths:
+        - path: /
+          pathType: Prefix
 cloneStaticSiteFromGit:
   enabled: true
   repository: https://github.com/samegens/samtrisjs

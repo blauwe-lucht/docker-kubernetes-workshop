@@ -13,26 +13,27 @@ winget install Helm.Helm
 ### Linux
 
 ``` bash
-sudo snap install helm --classic
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 ```
 
-## Add bitnami repo
+## Add cloudpirates repo
 
 ``` bash
-helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo add cloudpirates https://cloudpirates-io.github.io/helm-charts/
+helm repo update cloudpirates
 ```
 
 ## Install Helm chart with defaults
 
 ``` bash
-helm install my-first-helm-release bitnami/nginx
+helm install my-first-helm-release cloudpirates/nginx
 helm list
 ```
 
 ## Update with an actual site
 
 ``` bash
-helm upgrade my-first-helm-release bitnami/nginx -f helm/values.yml
+helm upgrade my-first-helm-release cloudpirates/nginx -f values.yml
 helm list
 ```
 
