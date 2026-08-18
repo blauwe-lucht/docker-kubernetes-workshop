@@ -134,7 +134,7 @@ Decouple storage from the Pod lifecycle using a PersistentVolume and PersistentV
 
 Let Kubernetes automatically create a PersistentVolume by referencing a StorageClass in a PVC — the production-standard approach used by Ceph, Longhorn, and other storage backends.
 
-### [ConfigMap](./k8s-config/)
+### [ConfigMap](./k8s-configmap/)
 
 Externalise configuration from the container image using a ConfigMap, injected as environment variables or a mounted file.
 
