@@ -15,9 +15,13 @@ or `longhorn`) — everything else stays the same.
 
 `kubectl get pv,pvc`
 
-## Open the app
+## Create content
 
-Visit <http://kuard.local> and use the File System browser under `/mnt` to create a file.
+Open a shell on one of the pods and write something to /mnt.
+
+## Open kuard
+
+Visit <http://kuard.local> and use the File System browser under `/mnt` to view file contents.
 
 ## Verify persistence across restarts
 
