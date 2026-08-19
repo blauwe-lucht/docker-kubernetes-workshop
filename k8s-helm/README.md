@@ -35,6 +35,14 @@ helm list
 ``` bash
 helm upgrade my-first-helm-release cloudpirates/nginx -f values.yml
 helm list
+helm history my-first-helm-release
+```
+
+## Roll back to previous version
+
+```bash
+helm rollback my-first-helm-release
+helm history my-first-helm-release
 ```
 
 ## Remove release
