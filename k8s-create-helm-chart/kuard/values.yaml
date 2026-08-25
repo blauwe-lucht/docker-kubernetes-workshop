@@ -1,0 +1,42 @@
+---
+# Number of Pod replicas
+replicaCount: 3
+
+image:
+  # Available tags: blue, green, purple
+  tag: blue
+  pullPolicy: IfNotPresent
+
+nameOverride: ""
+fullnameOverride: ""
+
+# Argument passed to the kuard binary on startup, e.g. "hello-world".
+# Left empty, kuard starts with no extra argument.
+startParam: ""
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: true
+  className: traefik
+
+# Exposed to the container as PARAM1/PARAM2 env vars and mounted at /config
+config:
+  param1: hello-world-again
+  param2: the-answer-is-42
+
+# Demo-only: real Secrets should never be committed to values.yaml in git.
+# See ../k8s-external-secrets for pulling secrets from a proper secret store.
+secret:
+  user: someone
+  password: topsecret
+
+resources:
+  limits:
+    memory: 200Mi
+    cpu: "0.2"
+  requests:
+    memory: 100Mi
+    cpu: "0.1"

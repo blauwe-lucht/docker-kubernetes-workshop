@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "kuard.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "kuard.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "kuard.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "kuard.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "blauwe-lucht/kuard-amd64:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.startParam }}
+          command:
+            - /kuard
+          args:
+            - {{ .Values.startParam | quote }}
+          {{- end }}
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: PARAM1
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "kuard.fullname" . }}-config
+                  key: param1
+            - name: PARAM2
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "kuard.fullname" . }}-config
+                  key: param2
+          livenessProbe:
+            httpGet:
+              path: /healthy
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 1
+            periodSeconds: 1
+            timeoutSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+            - name: secret-volume
+              mountPath: /secret
+      volumes:
+        - name: config-volume
+          configMap:
+            name: {{ include "kuard.fullname" . }}-config
+        - name: secret-volume
+          secret:
+            secretName: {{ include "kuard.fullname" . }}-secret

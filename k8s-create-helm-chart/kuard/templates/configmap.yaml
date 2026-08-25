@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "kuard.fullname" . }}-config
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "kuard.labels" . | nindent 4 }}
+data:
+  param1: {{ .Values.config.param1 | quote }}
+  param2: {{ .Values.config.param2 | quote }}
