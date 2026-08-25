@@ -23,7 +23,7 @@ Press `Ctrl+C` to stop port-forwarding.
 Edit `kuard.yml` and change the image tag from `blue` to `green`:
 
 ```yaml
-image: ongoonku/kuard-amd64:green
+image: blauwe-lucht/kuard-amd64:green
 ```
 
 Apply the update and watch Kubernetes roll it out. Pick one to try each approach:
