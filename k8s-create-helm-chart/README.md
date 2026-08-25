@@ -103,4 +103,3 @@ helm uninstall kuard
 helm uninstall kuard-demo --namespace kuard-demo
 kubectl delete namespace kuard-demo
 ```
-
