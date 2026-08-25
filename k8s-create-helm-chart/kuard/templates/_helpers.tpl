@@ -49,14 +49,14 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
 {{/*
-Ingress hostname for this release, derived from the release namespace.
-The "default" namespace maps to the bare kuard.local; any other namespace
-gets its own subdomain, e.g. staging -> staging.kuard.local.
+Ingress hostname for this release, driven by .Values.environment.
+"prd" maps to the bare kuard.local; any other
+value gets its own subdomain, e.g. dev -> dev.kuard.local.
 */}}
 {{- define "kuard.host" -}}
-{{- if eq .Release.Namespace "default" -}}
+{{- if eq .Values.environment "prd" -}}
 kuard.local
 {{- else -}}
-{{ .Release.Namespace }}.kuard.local
+{{ .Values.environment }}.kuard.local
 {{- end -}}
 {{- end -}}

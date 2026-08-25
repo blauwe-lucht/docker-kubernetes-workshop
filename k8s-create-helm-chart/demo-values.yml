@@ -1,0 +1,53 @@
+---
+# Example values file covering every configurable item in this chart.
+# Prefer a file like this over `--set` flags: it's versionable, diffable in
+# a PR/MR, and reproducible without digging through shell history — the
+# actual state of your release lives in git, not in a command someone ran
+# once.
+#
+# Try it from a fresh install:
+#   helm install kuard-demo ./kuard --namespace kuard-demo --create-namespace -f demo-values.yml
+# or after changing values on an existing release:
+#   helm upgrade kuard-demo ./kuard --namespace kuard-demo -f demo-values.yml
+
+replicaCount: 2
+
+image:
+  tag: green
+  pullPolicy: IfNotPresent
+
+environment: demo
+
+startParam: hello-from-demo-values
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: true
+  className: traefik
+
+config:
+  param1: configured-via-file
+  param2: not-a-secret
+
+secret:
+  user: demo-user
+  password: demo-password
+
+bindMounts:
+  - name: data
+    # On Rancher Desktop on Windows, change this to a path like /mnt/c/kuard-demo-data
+    # (this actually points to C:\kuard-demo-data, so make sure that directory exists).
+    hostPath: /tmp/kuard-demo-data
+    mountPath: /data
+    readOnly: true
+
+resources:
+  limits:
+    memory: 256Mi
+    cpu: "0.25"
+  requests:
+    memory: 128Mi
+    cpu: "0.1"

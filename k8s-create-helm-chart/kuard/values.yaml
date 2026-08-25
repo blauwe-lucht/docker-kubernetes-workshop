@@ -7,6 +7,8 @@ image:
   tag: blue
   pullPolicy: IfNotPresent
 
+environment: dev
+
 nameOverride: ""
 fullnameOverride: ""
 
@@ -32,6 +34,15 @@ config:
 secret:
   user: someone
   password: topsecret
+
+# Extra host bind mounts (hostPath volumes), e.g. for local development.
+# Default: none.
+# bindMounts:
+#   - name: data
+#     hostPath: /var/lib/kuard-data
+#     mountPath: /data
+#     readOnly: false
+bindMounts: []
 
 resources:
   limits:

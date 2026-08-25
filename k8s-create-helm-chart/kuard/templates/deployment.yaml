@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: "blauwe-lucht/kuard-amd64:{{ .Values.image.tag }}"
+          image: "blauwelucht/kuard-amd64:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.startParam }}
           command:
@@ -59,6 +59,11 @@ spec:
               mountPath: /config
             - name: secret-volume
               mountPath: /secret
+            {{- range .Values.bindMounts }}
+            - name: {{ .name }}
+              mountPath: {{ .mountPath }}
+              readOnly: {{ .readOnly | default true }}
+            {{- end }}
       volumes:
         - name: config-volume
           configMap:
@@ -66,3 +71,9 @@ spec:
         - name: secret-volume
           secret:
             secretName: {{ include "kuard.fullname" . }}-secret
+        {{- range .Values.bindMounts }}
+        - name: {{ .name }}
+          hostPath:
+            path: {{ .hostPath }}
+            type: DirectoryOrCreate
+        {{- end }}

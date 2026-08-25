@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: kuard
-          image: blauwe-lucht/kuard-amd64:blue
+          image: blauwelucht/kuard-amd64:blue
           ports:
             - containerPort: 8080
               protocol: TCP
