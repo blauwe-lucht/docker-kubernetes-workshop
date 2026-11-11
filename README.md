@@ -5,17 +5,21 @@ A collection of examples to get started with Docker and Kubernetes.
 ## Prerequisites
 
 - local admin rights (for installing WSL2 and modifying the hosts file);
-- WSL2: install with ```wsl --install``` in a local admin prompt;
-- [https://rancherdesktop.io/](Rancher Desktop), but don't install 1.24 (1.24 has a nasty bug);
-- basic understanding of the core concepts: [https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/](image),
-  [https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/](container),
-  [https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/](registry),
-  [https://docs.docker.com/get-started/docker-concepts/building-images/build-tag-and-publish-an-image/#tagging-images](tag),
-  [https://docs.docker.com/engine/network/port-publishing/](port mapping),
-  [https://docs.docker.com/engine/storage/volumes/](volumes);
-- knowledge of basic Docker commands:
+- WSL2: install with `wsl --install` in a local admin prompt;
+- [Rancher Desktop](https://rancherdesktop.io/), but don't install 1.24 (1.24 has a nasty bug);
+- basic understanding of the core concepts:
+  [image](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/),
+  [container](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/),
+  [registry](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/),
+  [tag](https://docs.docker.com/get-started/docker-concepts/building-images/build-tag-and-publish-an-image/#tagging-images),
+  [port mapping](https://docs.docker.com/engine/network/port-publishing/),
+  [bind mounts](https://docs.docker.com/engine/storage/bind-mounts/) and
+  [volumes](https://docs.docker.com/engine/storage/volumes/);
+- knowledge of basic Docker commands. Create `C:\training\index.html` and
+  `C:\training2\index.html` first. Run `docker exec` in a second terminal while
+  the foreground container is running:
 
-    ```bash
+    ```powershell
     docker version
     docker help
     docker pull hello-world
@@ -23,30 +27,30 @@ A collection of examples to get started with Docker and Kubernetes.
     docker run hello-world
     docker ps
     docker ps -a
-    docker rm <container>
-    docker rmi hello-world
     docker logs <container>
     docker logs -t <container>
+    docker rm <container>
+    docker rmi hello-world
     docker run --name hello hello-world
     docker rm hello
     docker run --name hello --rm hello-world
-    docker run --name nginx --rm nginx
-    docker run --name nginx --rm -p 80:80 nginx
+    docker run --name nginx --rm nginx:1.29
+    docker run --name nginx --rm -p 80:80 nginx:1.29
     docker exec nginx cat /usr/share/nginx/html/index.html
     docker exec -it nginx /bin/bash
-    docker run --name nginx --rm -p 80:80 -v C:\training\index.html:/usr/share/nginx/html/index.html nginx
-    docker run --name nginx --rm -p 80:80 -v C:\training:/usr/share/nginx/html nginx
-    docker run --name nginx --rm -p 80:80 -v C:\training:/usr/share/nginx/html:ro nginx
-    docker run --name nginx --rm -p 80:80 -v C:\training:/usr/share/nginx/html -d nginx
+    docker run --name nginx --rm -p 80:80 -v C:\training\index.html:/usr/share/nginx/html/index.html nginx:1.29
+    docker run --name nginx --rm -p 80:80 -v C:\training:/usr/share/nginx/html nginx:1.29
+    docker run --name nginx --rm -p 80:80 -v C:\training:/usr/share/nginx/html:ro nginx:1.29
+    docker run --name nginx -p 80:80 -v C:\training:/usr/share/nginx/html -d nginx:1.29
     docker inspect nginx
-    docker image inspect nginx
-    docker run --name nginx2 --rm -p 81:80 -v C:\training2:/usr/share/nginx/html -d nginx
+    docker image inspect nginx:1.29
+    docker run --name nginx2 --rm -p 81:80 -v C:\training2:/usr/share/nginx/html -d nginx:1.29
     docker logs -f nginx
     docker stop nginx
     docker start nginx
     docker kill nginx
     docker restart nginx
-    docker run --name nginx --rm -p 80:80 -v C:\training:/usr/share/nginx/html -e MY_VAR=HelloWorld -d nginx
+    docker run --name nginx --rm -p 80:80 -v C:\training:/usr/share/nginx/html -e MY_VAR=HelloWorld -d nginx:1.29
     docker cp nginx:/usr/share/nginx/html/index.html C:\training\index.html.org
     ```
 
