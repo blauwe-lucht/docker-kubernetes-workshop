@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 350" width="860" height="350" font-family="Helvetica, Arial, sans-serif">
+  <title>Pods per namespace in the NetworkPolicy demo</title>
+  <style>
+    .bg { fill: #ffffff; }
+    .ns { fill: #f3f6fa; stroke: #8a99ad; stroke-width: 1.5; }
+    .ns-title { fill: #1f2d3d; font-size: 16px; font-weight: bold; }
+    .pod { fill: #dbe9fb; stroke: #3b78c2; stroke-width: 1.5; }
+    .svc { fill: #e3f4e6; stroke: #3c9a52; stroke-width: 1.5; }
+    .deploy { fill: #ece4f7; stroke: #7a56b0; stroke-width: 1.5; }
+    .rs { fill: #fdf1dc; stroke: #c8871d; stroke-width: 1.5; }
+    .name { fill: #1f2d3d; font-size: 14px; font-weight: bold; }
+    .link { stroke: #6b7a8f; stroke-width: 1.5; fill: none; }
+    .traffic { stroke: #6b7a8f; stroke-width: 2; stroke-dasharray: 2 5; stroke-linecap: round; fill: none; }
+    .arrow { fill: #6b7a8f; }
+    .blocked { stroke: #d1242f; stroke-width: 3; stroke-linecap: round; }
+    .legend { fill: #4a5a6e; font-size: 12px; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #0d1117; }
+      .ns { fill: #161b22; stroke: #6e7b8c; }
+      .ns-title, .name { fill: #e6edf3; }
+      .pod { fill: #1a3352; stroke: #6ea8ec; }
+      .svc { fill: #173a22; stroke: #5cbf73; }
+      .deploy { fill: #2e2245; stroke: #a888d8; }
+      .rs { fill: #3d2c0f; stroke: #e0a640; }
+      .link, .traffic { stroke: #8b98a9; }
+      .arrow { fill: #8b98a9; }
+      .blocked { stroke: #f85149; }
+      .legend { fill: #a9b4c2; }
+    }
+  </style>
+  <defs>
+    <marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path class="arrow" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="860" height="350"/>
+
+  <rect class="ns" x="20" y="20" width="170" height="290" rx="10"/>
+  <text class="ns-title" x="105" y="46" text-anchor="middle">frontend</text>
+  <rect class="pod" x="40" y="250" width="130" height="40" rx="8"/>
+  <text class="name" x="105" y="275" text-anchor="middle">client</text>
+
+  <rect class="ns" x="210" y="20" width="440" height="290" rx="10"/>
+  <text class="ns-title" x="430" y="46" text-anchor="middle">backend</text>
+  <rect class="deploy" x="370" y="60" width="120" height="40" rx="8"/>
+  <text class="name" x="430" y="85" text-anchor="middle">kuard</text>
+  <rect class="rs" x="370" y="120" width="120" height="40" rx="8"/>
+  <text class="name" x="430" y="145" text-anchor="middle">kuard-…</text>
+  <rect class="pod" x="230" y="180" width="120" height="40" rx="8"/>
+  <text class="name" x="290" y="205" text-anchor="middle">kuard-…-…</text>
+  <rect class="pod" x="370" y="180" width="120" height="40" rx="8"/>
+  <text class="name" x="430" y="205" text-anchor="middle">kuard-…-…</text>
+  <rect class="pod" x="510" y="180" width="120" height="40" rx="8"/>
+  <text class="name" x="570" y="205" text-anchor="middle">kuard-…-…</text>
+  <rect class="svc" x="370" y="250" width="120" height="40" rx="8"/>
+  <text class="name" x="430" y="275" text-anchor="middle">kuard</text>
+  <line class="link" x1="430" y1="100" x2="430" y2="118" marker-end="url(#head)"/>
+  <line class="link" x1="430" y1="160" x2="290" y2="178" marker-end="url(#head)"/>
+  <line class="link" x1="430" y1="160" x2="430" y2="178" marker-end="url(#head)"/>
+  <line class="link" x1="430" y1="160" x2="570" y2="178" marker-end="url(#head)"/>
+  <line class="link" x1="430" y1="250" x2="290" y2="222" marker-end="url(#head)"/>
+  <line class="link" x1="430" y1="250" x2="430" y2="222" marker-end="url(#head)"/>
+  <line class="link" x1="430" y1="250" x2="570" y2="222" marker-end="url(#head)"/>
+
+  <rect class="ns" x="670" y="20" width="170" height="290" rx="10"/>
+  <text class="ns-title" x="755" y="46" text-anchor="middle">other</text>
+  <rect class="pod" x="690" y="250" width="130" height="40" rx="8"/>
+  <text class="name" x="755" y="275" text-anchor="middle">client</text>
+
+  <line class="traffic" x1="172" y1="270" x2="366" y2="270" marker-end="url(#head)"/>
+  <line class="traffic" x1="688" y1="270" x2="494" y2="270" marker-end="url(#head)"/>
+  <line class="blocked" x1="580" y1="260" x2="600" y2="280"/>
+  <line class="blocked" x1="600" y1="260" x2="580" y2="280"/>
+
+  <rect class="deploy" x="20" y="328" width="16" height="16" rx="3"/>
+  <text class="legend" x="44" y="341">Deployment</text>
+  <rect class="rs" x="140" y="328" width="16" height="16" rx="3"/>
+  <text class="legend" x="164" y="341">ReplicaSet</text>
+  <rect class="pod" x="260" y="328" width="16" height="16" rx="3"/>
+  <text class="legend" x="284" y="341">Pod</text>
+  <rect class="svc" x="340" y="328" width="16" height="16" rx="3"/>
+  <text class="legend" x="364" y="341">Service</text>
+</svg>

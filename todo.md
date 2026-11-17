@@ -4,22 +4,22 @@
 
 - [ ] Move Kustomize entry in `README.md` to after Secret (before Helm)
 
+## Numbering
+
+- [ ] Number each exercise within its main section (Docker, Docker Compose, K8s), in `README.md` order. Folder name: `<section>-NN-<description>`, e.g. `docker-01-simple`, `docker-compose-01-simple`, `k8s-01-pod`
+- [ ] Update all links and cross-references (`README.md`, demo READMEs, `CLAUDE.md`, `todo.md`, `decisions.md`)
+- [ ] Decide where `k8s-create-helm-chart` (not in `README.md`) and `vagrant-vmware-win11` fit
+
 ## Existing demos
 
 - [ ] `k8s-persistent-volume` — check how to access the hostPath data on Windows (path is inside the Rancher Desktop VM, not directly on the host filesystem)
+- [ ] Check all demos after Readiness probe for `resources`, `livenessProbe` and `readinessProbe` on every container (see [CLAUDE.md](CLAUDE.md))
 
 ## New demos
 
-### NetworkPolicy (`k8s-networkpolicy/`)
-
-Position: after Sealed Secrets, before RBAC.
-
-- [ ] `kuard.yml` — two Deployments + Services in separate namespaces; a NetworkPolicy that allows traffic from one and blocks the other
-- [ ] `README.md` — demonstrate that without a NetworkPolicy all pods can reach each other; apply the policy and show the block
-
 ### RBAC (`k8s-rbac/`)
 
-Position: after NetworkPolicy, before Kustomize.
+On hold. Position: after NetworkPolicy, before Kustomize.
 
 - [ ] `kuard.yml` — ServiceAccount, Role (namespace-scoped), RoleBinding; show a pod running as that ServiceAccount
 - [ ] `README.md` — demonstrate `kubectl auth can-i` before and after the binding; explain ClusterRole vs Role, ClusterRoleBinding vs RoleBinding

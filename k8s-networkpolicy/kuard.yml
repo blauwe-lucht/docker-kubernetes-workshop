@@ -1,0 +1,121 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: backend
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: frontend
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: other
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuard
+  namespace: backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kuard
+  template:
+    metadata:
+      labels:
+        app: kuard
+    spec:
+      containers:
+        - name: kuard
+          image: blauwelucht/kuard-amd64:1
+          livenessProbe:
+            httpGet:
+              path: /healthy
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 1
+            periodSeconds: 1
+            timeoutSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              memory: 200Mi
+              cpu: "0.2"
+            requests:
+              memory: 100Mi
+              cpu: "0.1"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kuard
+  namespace: backend
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: kuard
+---
+# Dummy frontend client, use wget to test connectivity from within this container.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client
+  namespace: frontend
+spec:
+  containers:
+    - name: client
+      image: busybox:1.37
+      command: ["sleep", "infinity"]
+      livenessProbe:
+        exec:
+          command: ["true"]
+      readinessProbe:
+        exec:
+          command: ["true"]
+      resources:
+        limits:
+          memory: 32Mi
+          cpu: "0.1"
+        requests:
+          memory: 16Mi
+          cpu: "0.05"
+---
+# Another dummy client, use wget to test connectivity from within this container.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client
+  namespace: other
+spec:
+  containers:
+    - name: client
+      image: busybox:1.37
+      command: ["sleep", "infinity"]
+      livenessProbe:
+        exec:
+          command: ["true"]
+      readinessProbe:
+        exec:
+          command: ["true"]
+      resources:
+        limits:
+          memory: 32Mi
+          cpu: "0.1"
+        requests:
+          memory: 16Mi
+          cpu: "0.05"

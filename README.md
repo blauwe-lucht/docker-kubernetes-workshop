@@ -218,6 +218,10 @@ Give each Pod a stable name, its own persistent storage, and an ordered startup 
 
 Run a three-node RabbitMQ cluster with Quorum Queues to demonstrate replication and automatic failover when a node is lost.
 
+### [NetworkPolicy](./k8s-networkpolicy/)
+
+Restrict which Pods may talk to each other: start from a default deny and allow only traffic from one namespace.
+
 ### [Helm](./k8s-helm/)
 
 Use Helm to install and manage pre-packaged Kubernetes applications (charts) with a single command.
