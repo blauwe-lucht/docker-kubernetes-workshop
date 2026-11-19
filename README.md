@@ -76,6 +76,20 @@ Use a build stage to compile and package a Java application with Maven, then cop
 
 Build an image that serves the bingo tracker: rootless and as small as possible.
 
+## Docker Compose examples
+
+```powershell
+docker compose version
+docker compose
+docker compose up
+docker compose up -d
+docker compose down
+docker compose down -v
+docker compose ps
+docker logs <service>
+docker exec -it <service> <command>
+```
+
 ### [Simple Docker Compose](./docker-compose-simple/)
 
 Run a simple multi-container setup using Docker Compose.
