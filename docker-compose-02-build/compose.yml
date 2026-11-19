@@ -1,5 +1,5 @@
 services:
   modified-nginx:
-    build: ../dockerfile-simple
+    build: ../docker-01-simple
     ports:
       - "8080:80"

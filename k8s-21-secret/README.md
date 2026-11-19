@@ -1,14 +1,14 @@
 # Secret
 
-A Secret is Kubernetes' way of storing sensitive values — passwords, tokens, keys — separately from the container image and from regular configuration. It looks and behaves a lot like a ConfigMap (see the [ConfigMap example](../k8s-configmap/)), but its values are base64-encoded and it's treated differently by tooling (e.g. `kubectl get` hides the values by default).
+A Secret is Kubernetes' way of storing sensitive values — passwords, tokens, keys — separately from the container image and from regular configuration. It looks and behaves a lot like a ConfigMap (see the [ConfigMap example](../k8s-20-configmap/)), but its values are base64-encoded and it's treated differently by tooling (e.g. `kubectl get` hides the values by default).
 
 This demo reuses the ConfigMap from the previous example and adds a Secret (`secret-config`) holding a `user` and `password`. The Secret is mounted as a volume at `/secret`, so each key shows up there as a file — the same mechanism used for the ConfigMap at `/config`.
 
-> **Note:** base64 is encoding, not encryption. Anyone with read access to the Secret object (or etcd) can decode the values trivially. Secrets keep sensitive data out of Pod specs and image layers, but on their own they don't protect it at rest — see the [External Secrets example](../k8s-external-secrets/) for pulling real secrets from a proper secret store.
+> **Note:** base64 is encoding, not encryption. Anyone with read access to the Secret object (or etcd) can decode the values trivially. Secrets keep sensitive data out of Pod specs and image layers, but on their own they don't protect it at rest — see the [External Secrets example](../k8s-22-external-secrets/) for pulling real secrets from a proper secret store.
 
 ## Prerequisites
 
-`kuard.local` must resolve to `127.0.0.1` in your hosts file. This is set up in the [Ingress example](../k8s-ingress/).
+`kuard.local` must resolve to `127.0.0.1` in your hosts file. This is set up in the [Ingress example](../k8s-05-ingress/).
 
 ## Apply
 

@@ -17,7 +17,7 @@ This example deploys the same application to `dev` and `prod` namespaces. The ba
 
 ## Prerequisites
 
-The Traefik ingress controller must be running. On Rancher Desktop it is included by default. Docker Desktop users should follow the setup instructions in the [Ingress example](../k8s-ingress/).
+The Traefik ingress controller must be running. On Rancher Desktop it is included by default. Docker Desktop users should follow the setup instructions in the [Ingress example](../k8s-05-ingress/).
 
 Add both hostnames to your hosts file if you haven't already:
 

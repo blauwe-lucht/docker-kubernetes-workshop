@@ -1,7 +1,7 @@
 kuard ({{ .Values.image.tag }}) has been deployed to namespace "{{ .Release.Namespace }}".
 
 Make sure {{ include "kuard.host" . }} resolves to 127.0.0.1 in your hosts file
-(see ../../k8s-ingress), then open:
+(see ../../k8s-05-ingress), then open:
 
   http://{{ include "kuard.host" . }}
 

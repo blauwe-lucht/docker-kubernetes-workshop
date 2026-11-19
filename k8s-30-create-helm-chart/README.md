@@ -1,8 +1,8 @@
 # Creating a Helm Chart
 
-The [Helm example](../k8s-helm/) installs a chart someone else wrote. This demo goes the other way: it's a small, complete Helm chart for kuard, written from scratch, meant as a starting point for your own application chart.
+The [Helm example](../k8s-29-helm/) installs a chart someone else wrote. This demo goes the other way: it's a small, complete Helm chart for kuard, written from scratch, meant as a starting point for your own application chart.
 
-It packages the same Deployment/ConfigMap/Secret/Service/Ingress from the [Secret example](../k8s-secret/), but templated so common per-environment differences — environment, image version, a startup argument — become a values file (or `-n` flag) instead of copy-pasted YAML files.
+It packages the same Deployment/ConfigMap/Secret/Service/Ingress from the [Secret example](../k8s-21-secret/), but templated so common per-environment differences — environment, image version, a startup argument — become a values file (or `-n` flag) instead of copy-pasted YAML files.
 
 Prefer a values file (`-f demo-values.yml`) over ad hoc `--set` flags. This is the Infrastructure-as-Code principle at work: a file is versionable, reviewable in a PR/MR, and reproducible by anyone who checks it out — a `--set` flag someone typed once lives only in their shell history. [demo-values.yml](demo-values.yml) in this directory sets every configurable value in the chart as a working example.
 
@@ -11,7 +11,7 @@ The Ingress host is driven by `environment`, a value — deliberately *not* deri
 ## What's in the chart
 
 ```text
-k8s-create-helm-chart/
+k8s-30-create-helm-chart/
   demo-values.yml         # example values file — every configurable item, set explicitly
   kuard/
     Chart.yaml            # chart metadata
@@ -37,18 +37,18 @@ Namespace isn't a value here — it's set with `helm install/upgrade -n <namespa
 | Value | Default | Effect |
 | --- | --- | --- |
 | `environment` | `dev` | Builds the Ingress host: `prd` → the bare `kuard.local`, anything else → `<environment>.kuard.local`. Not tied to the Kubernetes namespace — see above. |
-| `image.tag` | `blue` | kuard version to run — `blue`, `green`, or `purple` (see [k8s-deploy](../k8s-deploy/)); enforced by `values.schema.json`. The image repository itself is fixed (not a value) — the chart's probes, env vars, and startup command are all specific to kuard, so swapping in an unrelated image wouldn't work anyway. |
+| `image.tag` | `blue` | kuard version to run — `blue`, `green`, or `purple` (see [k8s-04-deploy](../k8s-04-deploy/)); enforced by `values.schema.json`. The image repository itself is fixed (not a value) — the chart's probes, env vars, and startup command are all specific to kuard, so swapping in an unrelated image wouldn't work anyway. |
 | `startParam` | `""` (empty) | Argument passed to the `/kuard` binary on startup. Left empty, no `command`/`args` override is rendered at all. |
 | `bindMounts` | `[]` (none) | Extra host bind mounts (`hostPath` volumes), each `{name, hostPath, mountPath, readOnly}`; enforced by `values.schema.json`. |
 | `replicaCount`, `service.*`, `ingress.*`, `resources.*`, `config.*`, `secret.*` | see `values.yaml` | Standard knobs, same idea as the values above. |
 
 Liveness/readiness probes (`/healthy`, `/ready`) are fixed in the template, not values — they're kuard's actual endpoints, so there's no valid alternative to configure them to.
 
-`secret.yaml` writes `secret.user`/`secret.password` under `stringData` rather than `data`, unlike the plain manifest in [k8s-secret](../k8s-secret/). `stringData` is write-only — Kubernetes base64-encodes it automatically when the Secret is created, so the chart doesn't need a `{{ ... | b64enc }}` in the template. `kubectl get secret -o yaml` still shows base64-encoded `data`, same as the k8s-secret demo.
+`secret.yaml` writes `secret.user`/`secret.password` under `stringData` rather than `data`, unlike the plain manifest in [k8s-21-secret](../k8s-21-secret/). `stringData` is write-only — Kubernetes base64-encodes it automatically when the Secret is created, so the chart doesn't need a `{{ ... | b64enc }}` in the template. `kubectl get secret -o yaml` still shows base64-encoded `data`, same as the k8s-21-secret demo.
 
 ## Prerequisites
 
-`kuard.local` must resolve to `127.0.0.1` in your hosts file — set up in the [Ingress example](../k8s-ingress/). That's only used when `environment: prd`. The default (`environment: dev`) and the values-file walkthrough below (`environment: demo`) need their own entries:
+`kuard.local` must resolve to `127.0.0.1` in your hosts file — set up in the [Ingress example](../k8s-05-ingress/). That's only used when `environment: prd`. The default (`environment: dev`) and the values-file walkthrough below (`environment: demo`) need their own entries:
 
 ```text
 127.0.0.1 dev.kuard.local

@@ -56,23 +56,23 @@ A collection of examples to get started with Docker and Kubernetes.
 
 ## Examples
 
-### [Simple Dockerfile](./dockerfile-simple/)
+### [Simple Dockerfile](./docker-01-simple/)
 
 Build and run a custom Nginx container using a Dockerfile.
 
-### [Rootless Dockerfile](./dockerfile-rootless/)
+### [Rootless Dockerfile](./docker-02-rootless/)
 
 Run an Nginx container as a non-root user using the nginx-unprivileged base image.
 
-### [Multi-stage Dockerfile — C++](./dockerfile-multistage-cpp/)
+### [Multi-stage Dockerfile — C++](./docker-03-multistage-cpp/)
 
 Use a build stage to compile a C++ binary and copy it to a minimal final image.
 
-### [Multi-stage Dockerfile — Java](./dockerfile-multistage-java/)
+### [Multi-stage Dockerfile — Java](./docker-04-multistage-java/)
 
 Use a build stage to compile and package a Java application with Maven, then copy only the JAR to a minimal JRE image.
 
-### [Dockerfile challenge](./dockerfile-challenge/)
+### [Dockerfile challenge](./docker-05-challenge/)
 
 Build an image that serves the bingo tracker: rootless and as small as possible.
 
@@ -90,156 +90,160 @@ docker logs <service>
 docker exec -it <service> <command>
 ```
 
-### [Simple Docker Compose](./docker-compose-simple/)
+### [Simple Docker Compose](./docker-compose-01-simple/)
 
 Run a simple multi-container setup using Docker Compose.
 
-### [Docker Compose with build](./docker-compose-build/)
+### [Docker Compose with build](./docker-compose-02-build/)
 
 Build an image from a Dockerfile and run it with Docker Compose.
 
-### [Docker Compose restart policies](./docker-compose-restart/)
+### [Docker Compose restart policies](./docker-compose-03-restart/)
 
 Control when Docker automatically restarts containers using restart policies.
 
-### [Docker Compose healthcheck](./docker-compose-healthcheck/)
+### [Docker Compose healthcheck](./docker-compose-04-healthcheck/)
 
 Add a healthcheck to a container so Docker knows when it is ready.
 
-### [Docker Compose resource limits](./docker-compose-limits/)
+### [Docker Compose resource limits](./docker-compose-05-limits/)
 
 Set CPU and memory limits and reservations for a container.
 
-### [Docker Compose replicas](./docker-compose-replicas/)
+### [Docker Compose replicas](./docker-compose-06-replicas/)
 
 Run multiple replicas of a container behind an nginx load balancer.
 
-### [Docker Compose complete](./docker-compose-complete/)
+### [Docker Compose complete](./docker-compose-07-complete/)
 
 A production-like setup combining healthchecks, restart policies, resource limits, replicas, and dependencies.
 
-### [Docker Compose challenge](./docker-compose-challenge/)
+### [Docker Compose challenge](./docker-compose-08-challenge/)
 
 Wire up an nginx reverse proxy that routes two hostnames to two separate application containers, with persistent storage for one of them.
 
 ## Kubernetes examples
 
-### [Pod](./k8s-pod/)
+### [Pod](./k8s-01-pod/)
 
 Run a single Pod in Kubernetes.
 
-### [ReplicaSet](./k8s-replicaset/)
+### [ReplicaSet](./k8s-02-replicaset/)
 
 Run multiple replicas of a Pod and expose them via a NodePort Service.
 
-### [Service](./k8s-service/)
+### [Service](./k8s-03-service/)
 
 Expose a ReplicaSet using a NodePort Service so it can be reached from outside the cluster.
 
-### [Deployment](./k8s-deploy/)
+### [Deployment](./k8s-04-deploy/)
 
 Manage a ReplicaSet via a Deployment (the standard way to run workloads in Kubernetes), exposed via a NodePort Service.
 
-### [Ingress](./k8s-ingress/)
+### [Ingress](./k8s-05-ingress/)
 
 Route external HTTP traffic to a Service using an Ingress, with a Deployment behind a ClusterIP Service.
 
-### [Custom images (local registry)](./k8s-custom-image/)
+### [Custom images (local registry)](./k8s-06-custom-image/)
 
 Build a custom image, push it to a local registry running via Compose, and deploy it to the Rancher Desktop Kubernetes cluster — regardless of whether Rancher Desktop is using dockerd or containerd under the hood.
 
-### [Ingress — path-based routing](./k8s-ingress-multi/)
+### [Ingress — path-based routing](./k8s-07-ingress-multi/)
 
 Route different URL paths to different backends using a single Ingress using different path prefixes.
 
-### [Ingress challenge](./k8s-ingress-challenge/)
+### [Ingress challenge](./k8s-08-ingress-challenge/)
 
 Apply a broken Ingress setup and find all the problems.
 
-### [Gateway API](./k8s-gateway-api/)
+### [Gateway API](./k8s-09-gateway-api/)
 
 Route external HTTP traffic using the Gateway API — the successor to Ingress — with a clear separation between GatewayClass, Gateway, and HTTPRoute.
 
-### [Namespaces](./k8s-namespaces/)
+### [Namespaces](./k8s-10-namespaces/)
 
 Isolate workloads into separate namespaces and route traffic to each using a single shared ingress controller.
 
-### [Resources](./k8s-resources/)
+### [Resources](./k8s-11-resources/)
 
 Set CPU and memory requests and limits on a container.
 
-### [Liveness probe](./k8s-liveness/)
+### [Liveness probe](./k8s-12-liveness/)
 
 Add a liveness probe so Kubernetes automatically restarts a container when it becomes unhealthy.
 
-### [Readiness probe](./k8s-readiness/)
+### [Readiness probe](./k8s-13-readiness/)
 
 Add a readiness probe so Kubernetes only routes traffic to a Pod once it is ready to serve requests.
 
-### [Startup probe](./k8s-startup-probe/)
+### [Startup probe](./k8s-14-startup-probe/)
 
 Add a startup probe to give slow-starting containers a generous startup budget without relaxing the liveness threshold that guards the running container.
 
-### [Kustomize](./k8s-kustomize/)
+### [Kustomize](./k8s-15-kustomize/)
 
 Manage environment-specific configuration using a shared base and overlays, without duplicating YAML.
 
-### [Horizontal Pod Autoscaler](./k8s-horizontal-pod-autoscaler/)
+### [Horizontal Pod Autoscaler](./k8s-16-horizontal-pod-autoscaler/)
 
 Automatically scale the number of replicas up and down based on CPU utilisation.
 
-### [Volumes](./k8s-volumes/)
+### [Volumes](./k8s-17-volumes/)
 
 Mount a host directory and a shared in-memory volume into a Pod using hostPath and emptyDir volumes.
 
-### [Persistent Volumes](./k8s-persistent-volume/)
+### [Persistent Volumes](./k8s-18-persistent-volume/)
 
 Decouple storage from the Pod lifecycle using a PersistentVolume and PersistentVolumeClaim.
 
-### [Dynamically Provisioned Persistent Volume](./k8s-dynamically-provisioned-pv/)
+### [Dynamically Provisioned Persistent Volume](./k8s-19-dynamically-provisioned-pv/)
 
 Let Kubernetes automatically create a PersistentVolume by referencing a StorageClass in a PVC — the production-standard approach used by Ceph, Longhorn, and other storage backends.
 
-### [ConfigMap](./k8s-configmap/)
+### [ConfigMap](./k8s-20-configmap/)
 
 Externalise configuration from the container image using a ConfigMap, injected as environment variables or a mounted file.
 
-### [Secret](./k8s-secret/)
+### [Secret](./k8s-21-secret/)
 
 Store sensitive values such as passwords separately from other configuration using a Secret, injected as environment variables or a mounted file.
 
-### [External Secrets](./k8s-external-secrets/)
+### [External Secrets](./k8s-22-external-secrets/)
 
 Pull secret values from an external store (Infisical) into Kubernetes Secrets automatically using the External Secrets Operator, without ever committing sensitive values to git.
 
-### [Job and CronJob](./k8s-job/)
+### [Job and CronJob](./k8s-23-job/)
 
 Run a task to completion with a Job, and schedule recurring Jobs with a CronJob.
 
-### [kind](./k8s-kind/)
+### [kind](./k8s-24-kind/)
 
 Spin up a real multi-node cluster with `kind` (Kubernetes IN Docker) so Pod scheduling across nodes — like the following DaemonSet demo — can actually be observed, instead of running on Rancher Desktop's single node.
 
-### [DaemonSet](./k8s-daemonset/)
+### [DaemonSet](./k8s-25-daemonset/)
 
 Run exactly one Pod on every node in the cluster. Uses Fluent Bit as a practical example of a log collector that captures logs from all Pods on a node.
 
-### [StatefulSet](./k8s-statefulset-simple/)
+### [StatefulSet](./k8s-26-statefulset-simple/)
 
 Give each Pod a stable name, its own persistent storage, and an ordered startup sequence — and see how identity is preserved across restarts.
 
-### [StatefulSet — RabbitMQ with replication](./k8s-statefulset-rabbitmq/)
+### [StatefulSet — RabbitMQ with replication](./k8s-27-statefulset-rabbitmq/)
 
 Run a three-node RabbitMQ cluster with Quorum Queues to demonstrate replication and automatic failover when a node is lost.
 
-### [NetworkPolicy](./k8s-networkpolicy/)
+### [NetworkPolicy](./k8s-28-networkpolicy/)
 
 Restrict which Pods may talk to each other: start from a default deny and allow only traffic from one namespace.
 
-### [Helm](./k8s-helm/)
+### [Helm](./k8s-29-helm/)
 
 Use Helm to install and manage pre-packaged Kubernetes applications (charts) with a single command.
 
-### [Kubernetes Dashboard](./k8s-dashboard/)
+### [Creating a Helm chart](./k8s-30-create-helm-chart/)
+
+Write a small Helm chart for kuard from scratch and configure each environment with a values file.
+
+### [Kubernetes Dashboard](./k8s-31-dashboard/)
 
 Inspect and manage cluster resources through a web-based UI using the Kubernetes Dashboard, installed via Helm.

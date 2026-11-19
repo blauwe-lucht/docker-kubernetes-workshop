@@ -30,7 +30,7 @@ config:
   param2: the-answer-is-42
 
 # Demo-only: real Secrets should never be committed to values.yaml in git.
-# See ../k8s-external-secrets for pulling secrets from a proper secret store.
+# See ../k8s-22-external-secrets for pulling secrets from a proper secret store.
 secret:
   user: someone
   password: topsecret

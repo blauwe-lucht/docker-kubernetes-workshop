@@ -40,10 +40,10 @@ Pushed images are stored in the `registry-data` volume, so they survive `docker 
 
 ## Build and push the custom image
 
-Reuse the modified Nginx image from [../dockerfile-simple](../dockerfile-simple/), tagged for the local registry:
+Reuse the modified Nginx image from [../docker-01-simple](../docker-01-simple/), tagged for the local registry:
 
 ```bash
-docker build -t localhost:5000/modified-nginx:1 ../dockerfile-simple
+docker build -t localhost:5000/modified-nginx:1 ../docker-01-simple
 docker push localhost:5000/modified-nginx:1
 ```
 
@@ -66,12 +66,12 @@ Open <http://custom.local> in your browser. This is the exact image you just bui
 
 ## Update and redeploy
 
-Change [../dockerfile-simple/index.html](../dockerfile-simple/index.html), then:
+Change [../docker-01-simple/index.html](../docker-01-simple/index.html), then:
 
 ### The fast and ugly way
 
 ```bash
-docker build -t localhost:5000/modified-nginx:1 ../dockerfile-simple
+docker build -t localhost:5000/modified-nginx:1 ../docker-01-simple
 docker push localhost:5000/modified-nginx:1
 kubectl rollout restart deployment/custom-app
 ```
@@ -81,7 +81,7 @@ The tag `1` is reused on every rebuild, so `custom-app.yml` sets `imagePullPolic
 ### The proper way
 
 ```bash
-docker build -t localhost:5000/modified-nginx:2 ../dockerfile-simple
+docker build -t localhost:5000/modified-nginx:2 ../docker-01-simple
 docker push localhost:5000/modified-nginx:2
 ```
 
