@@ -1,6 +1,6 @@
 # Creating a Helm Chart
 
-The [Helm example](../k8s-29-helm/) installs a chart someone else wrote. This demo goes the other way: it's a small, complete Helm chart for kuard, written from scratch, meant as a starting point for your own application chart.
+The [Helm example](../k8s-28-helm/) installs a chart someone else wrote. This demo goes the other way: it's a small, complete Helm chart for kuard, written from scratch, meant as a starting point for your own application chart.
 
 It packages the same Deployment/ConfigMap/Secret/Service/Ingress from the [Secret example](../k8s-21-secret/), but templated so common per-environment differences — environment, image version, a startup argument — become a values file (or `-n` flag) instead of copy-pasted YAML files.
 
@@ -11,7 +11,7 @@ The Ingress host is driven by `environment`, a value — deliberately *not* deri
 ## What's in the chart
 
 ```text
-k8s-30-create-helm-chart/
+k8s-29-create-helm-chart/
   demo-values.yml         # example values file — every configurable item, set explicitly
   kuard/
     Chart.yaml            # chart metadata

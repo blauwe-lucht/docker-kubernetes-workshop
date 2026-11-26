@@ -62,8 +62,9 @@ Position: after Kustomize, before Horizontal Pod Autoscaler.
 
 Position: after DaemonSet, before StatefulSet simple.
 
-- [ ] `kuard.yml` — nodeAffinity example (preferred and required) plus a taint + toleration pair, using the kind multi-node cluster so placement is actually observable
-- [ ] `README.md` — show a Pod landing on the wrong/right node with affinity rules; taint a node and show a Pod without the matching toleration getting scheduled elsewhere
+- [ ] `kuard.yml` — nodeAffinity example (preferred and required) plus a taint + toleration pair
+- [ ] `README.md` — on the single-node cluster: show a Pod stuck in `Pending` for an unmet required affinity or a taint without toleration, then fix it
+- [ ] Optional multi-node part via [kind](k8s-31-kind/) (self-study): Pods spread over nodes and avoid a tainted node
 
 ## README final order (Kubernetes section)
 
@@ -91,13 +92,13 @@ Position: after DaemonSet, before StatefulSet simple.
 22. Secret
 23. External Secrets
 24. Job / CronJob
-25. kind
-26. DaemonSet
-27. Pod Scheduling — Affinity & Taints *(new)*
-28. StatefulSet simple
-29. StatefulSet RabbitMQ
-30. NetworkPolicy *(new)*
-31. RBAC *(new)*
-32. Helm
-33. Kubernetes Dashboard
-34. CRDs *(new)*
+25. DaemonSet
+26. Pod Scheduling — Affinity & Taints *(new)*
+27. StatefulSet simple
+28. StatefulSet RabbitMQ
+29. NetworkPolicy *(new)*
+30. RBAC *(new)*
+31. Helm
+32. Kubernetes Dashboard
+33. CRDs *(new)*
+34. kind *(self-study)*

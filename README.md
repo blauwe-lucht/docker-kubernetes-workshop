@@ -216,34 +216,38 @@ Pull secret values from an external store (Infisical) into Kubernetes Secrets au
 
 Run a task to completion with a Job, and schedule recurring Jobs with a CronJob.
 
-### [kind](./k8s-24-kind/)
-
-Spin up a real multi-node cluster with `kind` (Kubernetes IN Docker) so Pod scheduling across nodes — like the following DaemonSet demo — can actually be observed, instead of running on Rancher Desktop's single node.
-
-### [DaemonSet](./k8s-25-daemonset/)
+### [DaemonSet](./k8s-24-daemonset/)
 
 Run exactly one Pod on every node in the cluster. Uses Fluent Bit as a practical example of a log collector that captures logs from all Pods on a node.
 
-### [StatefulSet](./k8s-26-statefulset-simple/)
+### [StatefulSet](./k8s-25-statefulset-simple/)
 
 Give each Pod a stable name, its own persistent storage, and an ordered startup sequence — and see how identity is preserved across restarts.
 
-### [StatefulSet — RabbitMQ with replication](./k8s-27-statefulset-rabbitmq/)
+### [StatefulSet — RabbitMQ with replication](./k8s-26-statefulset-rabbitmq/)
 
 Run a three-node RabbitMQ cluster with Quorum Queues to demonstrate replication and automatic failover when a node is lost.
 
-### [NetworkPolicy](./k8s-28-networkpolicy/)
+### [NetworkPolicy](./k8s-27-networkpolicy/)
 
 Restrict which Pods may talk to each other: start from a default deny and allow only traffic from one namespace.
 
-### [Helm](./k8s-29-helm/)
+### [Helm](./k8s-28-helm/)
 
 Use Helm to install and manage pre-packaged Kubernetes applications (charts) with a single command.
 
-### [Creating a Helm chart](./k8s-30-create-helm-chart/)
+### [Creating a Helm chart](./k8s-29-create-helm-chart/)
 
 Write a small Helm chart for kuard from scratch and configure each environment with a values file.
 
-### [Kubernetes Dashboard](./k8s-31-dashboard/)
+### [Kubernetes Dashboard](./k8s-30-dashboard/)
 
 Inspect and manage cluster resources through a web-based UI using the Kubernetes Dashboard, installed via Helm.
+
+## Self-study
+
+Not used during the training; try these in your own time.
+
+### [kind](./k8s-31-kind/)
+
+Spin up a real multi-node cluster with `kind` (Kubernetes IN Docker): each node runs as its own Docker container, so you can see Pods spread over several nodes instead of Rancher Desktop's single node.
