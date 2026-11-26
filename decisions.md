@@ -15,3 +15,7 @@
 - **Number the current order, renumber on insert**: planned demos and reorders get their number when they land; renaming later folders is accepted.
 - **`k8s-30-create-helm-chart` right after Helm**: it builds on the Helm demo and is listed in `README.md`.
 - **`vagrant-vmware-win11` unnumbered**: it is the author's Windows test VM, not an exercise.
+
+## Horizontal Pod Autoscaler demo
+
+- **Load from kuard's KeyGen workload**: it is built into kuard and started from the browser, so no extra load generator is needed. It runs in one Pod, which also shows that the HPA works on the average over all Pods.

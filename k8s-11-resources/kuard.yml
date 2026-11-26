@@ -16,19 +16,6 @@ spec:
       containers:
         - name: kuard
           image: blauwelucht/kuard-amd64:1
-          livenessProbe:
-            httpGet:
-              path: /healthy
-              port: 8080
-          readinessProbe:
-            httpGet:
-              path: /ready
-              port: 8080
-            initialDelaySeconds: 1
-            periodSeconds: 1
-            timeoutSeconds: 1
-            failureThreshold: 3
-            successThreshold: 1
           ports:
             - containerPort: 8080
               protocol: TCP

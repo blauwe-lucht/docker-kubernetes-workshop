@@ -11,6 +11,16 @@
 
 ## New demos
 
+### Vertical Pod Autoscaler (`k8s-17-vertical-pod-autoscaler/`)
+
+On hold. Position: right after Horizontal Pod Autoscaler; renumber the folders after it.
+
+- [ ] Install VPA with the official chart (`helm repo add autoscalers https://kubernetes.github.io/autoscaler`, chart `autoscalers/vertical-pod-autoscaler`)
+- [ ] `kuard.yml` with oversized requests; `vpa.yml` with `updateMode: "Off"`, then switch to `InPlaceOrRecreate` (resize without restart, Kubernetes 1.33+)
+- [ ] `README.md` — HPA vs VPA, update modes, never both on the same CPU/memory metric
+- [ ] Verify: updater minimum replicas for in-place, minimum Kubernetes version on Rancher Desktop (VPA 1.8.x supports 1.36–1.38)
+- [ ] Author's k3s: delete the leftover VPA CRDs (not Helm-managed) before installing
+
 ### RBAC (`k8s-rbac/`)
 
 On hold. Position: after NetworkPolicy, before Kustomize.
